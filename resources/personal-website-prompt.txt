@@ -1,0 +1,50 @@
+PROMPT: CREATE A FULL PERSONAL WEBSITE AGENCY SINGLE PAGE
+
+You are an expert web designer and developer. Create a complete, responsive, single-page personal agency website using HTML, CSS, and JavaScript. Include:
+
+1. NAVIGATION:
+- Fixed/sticky header with logo and menu links (Home, Services, Portfolio, Testimonials, Contact)
+- Mobile hamburger menu
+
+2. HERO SECTION:
+- Full-width background with gradient overlay
+- Agency name and tagline
+- Professional headshot placeholder
+- Call-to-action button "Get Started"
+
+3. SERVICES SECTION:
+- 3-4 service cards with icons
+- Web Design, Development, Marketing, Consulting
+
+4. PORTFOLIO SECTION:
+- 4-6 project cards with images
+- Hover effects showing project title and description
+
+5. TESTIMONIALS SECTION:
+- 3-4 client testimonials with photos
+
+6. CONTACT SECTION:
+- Contact form (Name, Email, Message)
+- Phone, email, address
+- Social media links
+
+7. FOOTER:
+- Copyright information
+- Quick links
+- Social icons
+
+STYLE REQUIREMENTS:
+- Modern, professional color scheme
+- Smooth animations and transitions
+- Fully responsive (mobile-first)
+- Clean typography (Google Fonts)
+- Font Awesome icons
+
+FUNCTIONALITY:
+- Smooth scrolling
+- Form validation
+- Mobile menu toggle
+- Scroll animations
+- Active nav highlighting
+
+Generate the complete code in a single HTML file with embedded CSS and JavaScript.
