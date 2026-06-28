@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Samuel Katumba - digital entrepreneurship trainer, full-stack developer, AI engineer, and educator.">
-  <title>Samuel Katumba | Digital Entrepreneurship Training</title>
+  <meta name="description" content="Samuel Katumba - formateur en entrepreneuriat numérique, développeur full-stack, ingénieur IA et éducateur.">
+  <title>Samuel Katumba | Formation en Entrepreneuriat Numérique</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <style>
+    /* === SAME STYLES AS ENGLISH VERSION === */
     :root {
       --plum: #3f3658;
       --plum-dark: #2a2240;
@@ -65,13 +66,6 @@
     .nav.scrolled .language-switcher { border-color: var(--line); background: var(--white); }
     .language-option { min-width: 34px; height: 28px; padding: 0 8px; border: 0; border-radius: 5px; color: inherit; background: transparent; font-size: .72rem; font-weight: 800; cursor: pointer; }
     .language-option.active { color: var(--ink); background: var(--peach); }
-    .language-prompt { position: fixed; inset: auto 18px 18px; z-index: 100; display: flex; align-items: center; justify-content: space-between; gap: 20px; width: min(560px, calc(100% - 36px)); margin: auto; padding: 15px 16px 15px 20px; color: var(--white); background: var(--plum); border: 1px solid rgba(229,173,130,.5); border-radius: 10px; box-shadow: 0 18px 48px rgba(30,21,44,.3); }
-    .language-prompt[hidden] { display: none; }
-    .language-prompt strong { display: block; font-family: "Playfair Display", Georgia, serif; font-size: 1.08rem; }
-    .language-prompt span { display: block; margin-top: 2px; color: rgba(255,255,255,.72); font-size: .78rem; }
-    .language-prompt-actions { display: flex; flex-shrink: 0; gap: 7px; }
-    .prompt-language { min-height: 38px; padding: 8px 13px; border: 1px solid rgba(255,255,255,.25); border-radius: 6px; color: var(--white); background: transparent; font-weight: 800; cursor: pointer; }
-    .prompt-language[data-language="fr"] { border-color: var(--peach); color: var(--ink); background: var(--peach); }
     .menu-toggle { width: 40px; height: 40px; display: none; place-items: center; border: 1px solid rgba(255,255,255,.28); border-radius: 6px; color: inherit; background: transparent; cursor: pointer; }
     .nav.scrolled .menu-toggle { border-color: var(--line); }
 
@@ -297,43 +291,37 @@
       .language-prompt-actions { width: 100%; }
       .prompt-language { flex: 1; }
       .language-option { min-width: 32px; padding: 0 6px; }
-    }  </style>
+    }
+  </style>
 </head>
 <body>
 
 <header class="nav" id="nav">
   <div class="container nav-inner">
-    <a class="brand" href="#home" aria-label="Samuel Katumba home">
+    <a class="brand" href="#home" aria-label="Samuel Katumba accueil">
       <span class="brand-icon"><i class="fa-solid fa-shield-halved"></i></span>
-        Samuel Katumba
+      Samuel Katumba
     </a>
-    <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
-      <a href="#about">About</a>
-      <a href="#coaching">Coaching</a>
-      <a href="#events">Events</a>
-      <a href="#sponsor">Sponsorship</a>
-      <a href="#resources">Resources</a>
-      <a href="#testimonials">Testimonials</a>
-      <a href="#contact" class="nav-cta">Join Free →</a>
+    <nav class="nav-links" id="navLinks" aria-label="Navigation principale">
+      <a href="#about">À propos</a>
+      <a href="#coaching">Formation</a>
+      <a href="#events">Événements</a>
+      <a href="#sponsor">Partenariat</a>
+      <a href="#resources">Ressources</a>
+      <a href="#testimonials">Témoignages</a>
+      <a href="#contact" class="nav-cta">Rejoindre gratuit →</a>
     </nav>
     <div class="nav-tools">
-      <div class="language-switcher" role="group" aria-label="Choose language">
-        <a class="language-option active" href="index.html" data-language="en" aria-pressed="true">EN</a>
-        <a class="language-option" href="index-fr.html" data-language="fr" aria-pressed="false">FR</a>
+      <div class="language-switcher" role="group" aria-label="Choisir la langue">
+        <a href="index.html" class="language-option" data-language="en" aria-pressed="false">EN</a>
+        <a href="index-fr.html" class="language-option active" data-language="fr" aria-pressed="true">FR</a>
       </div>
-      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false">
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false">
         <i class="fa-solid fa-bars"></i>
       </button>
     </div>
   </div>
 </header>
-<aside class="language-prompt" id="languagePrompt" aria-live="polite" hidden>
-  <div><strong>Choose your language</strong><span>Choisissez la langue qui vous convient.</span></div>
-  <div class="language-prompt-actions">
-    <button class="prompt-language" type="button" data-language="en">English</button>
-    <button class="prompt-language" type="button" data-language="fr">Français</button>
-  </div>
-</aside>
 
 <main>
 
@@ -343,22 +331,22 @@
     <div class="hero-content reveal">
       <div class="hero-badge">
         <span class="hero-badge-dot"><i class="fa-solid fa-bolt" style="font-size:.65rem"></i></span>
-        The AI Revolution Has Arrived
+        La révolution de l'IA est arrivée
       </div>
-      <h1>Build Websites &amp; Apps in <em>ONE DAY</em> — 100% Free</h1>
-      <p class="lead">What once took years of university training now takes just 10 hours with AI. No experience needed. Join thousands of Zambians already building their digital future.</p>
+      <h1>Créez des sites web et des applis en <em>UNE JOURNÉE</em> — 100 % gratuit</h1>
+      <p class="lead">Ce qui prenait autrefois des années d'études universitaires ne prend plus que 10 heures avec l'IA. Aucune expérience requise. Rejoignez les milliers de Zambiens qui construisent déjà leur avenir numérique.</p>
       <div class="hero-actions">
-        <a class="btn" href="#contact">Join Free Bootcamp <i class="fa-solid fa-angle-right"></i></a>
-        <a class="btn outline" href="#events">View Events <i class="fa-solid fa-calendar-days"></i></a>
+        <a class="btn" href="#contact">Rejoindre le bootcamp gratuit <i class="fa-solid fa-angle-right"></i></a>
+        <a class="btn outline" href="#events">Voir les événements <i class="fa-solid fa-calendar-days"></i></a>
       </div>
       <div class="hero-stat-row">
-        <div class="hero-stat"><strong>1,000+</strong><span>Students per session</span></div>
-        <div class="hero-stat"><strong>10 hrs</strong><span>Zero to developer</span></div>
-        <div class="hero-stat"><strong>100%</strong><span>Free training</span></div>
+        <div class="hero-stat"><strong>1 000+</strong><span>Étudiants par session</span></div>
+        <div class="hero-stat"><strong>10 h</strong><span>De zéro au développeur</span></div>
+        <div class="hero-stat"><strong>100 %</strong><span>Formation gratuite</span></div>
       </div>
     </div>
   </div>
-  <a class="scroll-cue" href="#about" aria-label="Scroll to about">
+  <a class="scroll-cue" href="#about" aria-label="Défiler vers à propos">
     <i class="fa-solid fa-chevron-down"></i>
   </a>
 </section>
@@ -368,18 +356,18 @@
   <div class="container about-grid">
     <div class="portrait reveal" role="img" aria-label="Samuel Katumba"></div>
     <div class="about-copy reveal">
-      <span class="eyebrow">About Samuel</span>
-      <h2>Practical guidance for builders who want visible results.</h2>
+      <span class="eyebrow">À propos de Samuel</span>
+      <h2>Des conseils pratiques pour des résultats visibles.</h2>
       <div class="credential-chips">
-        <span class="chip">BSc Computer Science — UoPeople (USA)</span>
-        <span class="chip">BSc Tourism Mgmt — Amity (India)</span>
-        <span class="chip">MCA in AI — Amity (pursuing)</span>
-        <span class="chip">PG Dip Teaching — Copperstone</span>
+        <span class="chip">BSc Informatique — UoPeople (USA)</span>
+        <span class="chip">BSc Gestion Touristique — Amity (Inde)</span>
+        <span class="chip">MCA en IA — Amity (en cours)</span>
+        <span class="chip">PG Dip Enseignement — Copperstone</span>
       </div>
-      <p class="lead">Samuel Katumba is a Zambian entrepreneur, university lecturer, and digital skills trainer based in Kitwe. He has built multiple commercial-level systems — from university management portals to AI-powered election platforms — and is on a mission to train 10,000 Zambians for FREE.</p>
-      <p style="margin-top:14px;color:var(--muted);font-size:.95rem;line-height:1.8;">Once upon a time, building a website required years of training. That world no longer exists. Today, with AI, anyone can build and launch a professional site in ONE DAY. Samuel believes the AI revolution is the great equalizer — and he's proving it, one bootcamp at a time.</p>
+      <p class="lead">Samuel Katumba est un entrepreneur zambien, chargé de cours universitaire et formateur en compétences numériques basé à Kitwe. Il a construit de nombreux systèmes de niveau commercial — des portails de gestion universitaire aux plateformes électorales alimentées par l'IA — et a pour mission de former gratuitement 10 000 Zambiens.</p>
+      <p style="margin-top:14px;color:var(--muted);font-size:.95rem;line-height:1.8;">Autrefois, créer un site web demandait des années de formation. Ce monde n'existe plus. Aujourd'hui, avec l'IA, n'importe qui peut créer et lancer un site professionnel en UNE JOURNÉE. Samuel croit que la révolution de l'IA est le grand égalisateur — et il le prouve, bootcamp après bootcamp.</p>
       <p class="signature">Samuel Katumba</p>
-      <a class="btn" href="#coaching" style="margin-top:20px;">Learn more <i class="fa-solid fa-angle-right"></i></a>
+      <a class="btn" href="#coaching" style="margin-top:20px;">En savoir plus <i class="fa-solid fa-angle-right"></i></a>
     </div>
   </div>
 </section>
@@ -389,63 +377,63 @@
   <div class="container">
     <div class="section-heading reveal">
       <span class="eyebrow">Portfolio</span>
-      <h2>💼 Real Systems. Real Impact.</h2>
-      <p style="color:var(--muted);margin-top:12px;font-size:1.05rem;">Here's what I've built — and what I'll teach you to build.</p>
+      <h2>💼 Des systèmes réels. Un impact réel.</h2>
+      <p style="color:var(--muted);margin-top:12px;font-size:1.05rem;">Voici ce que j'ai construit — et ce que je vous apprendrai à construire.</p>
     </div>
     <div class="portfolio-grid">
       <article class="portfolio-card reveal" style="--pc:#0EA5E9;">
         <div class="portfolio-icon">🏛️</div>
-        <h3>University Management Portal</h3>
-        <p>Admissions, registration, finance &amp; student management for 5,000+ students at Copperstone University.</p>
+        <h3>Portail de gestion universitaire</h3>
+        <p>Admissions, inscriptions, finances et gestion des étudiants pour plus de 5 000 étudiants à la Copperstone University.</p>
         <div class="tech-tags">
           <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">PostgreSQL</span>
         </div>
-        <a href="#" class="project-link">View Project <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="#" class="project-link">Voir le projet <i class="fa-solid fa-arrow-right"></i></a>
       </article>
       <article class="portfolio-card reveal" style="--pc:#7C3AED;">
         <div class="portfolio-icon">🗳️</div>
-        <h3>True-Vote AI Platform</h3>
-        <p>AI-powered election insights &amp; trend prediction used by thousands of candidates across Zambia.</p>
+        <h3>Plateforme True-Vote AI</h3>
+        <p>Informations électorales et prédictions des tendances alimentées par l'IA, utilisées par des milliers de candidats à travers la Zambie.</p>
         <div class="tech-tags">
           <span class="tag">Python</span><span class="tag">TensorFlow</span><span class="tag">MongoDB</span>
         </div>
-        <a href="#" class="project-link">View Project <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="#" class="project-link">Voir le projet <i class="fa-solid fa-arrow-right"></i></a>
       </article>
       <article class="portfolio-card reveal" style="--pc:#10B981;">
         <div class="portfolio-icon">🛡️</div>
-        <h3>True Safe AI System</h3>
-        <p>Automated risk assessments, safety talks &amp; compliance audits for workplace safety.</p>
+        <h3>Système True Safe AI</h3>
+        <p>Évaluations automatisées des risques, causeries sécurité et audits de conformité pour la sécurité au travail.</p>
         <div class="tech-tags">
           <span class="tag">Python</span><span class="tag">React</span><span class="tag">PostgreSQL</span>
         </div>
-        <a href="#" class="project-link">View Project <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="#" class="project-link">Voir le projet <i class="fa-solid fa-arrow-right"></i></a>
       </article>
       <article class="portfolio-card reveal" style="--pc:#F59E0B;">
         <div class="portfolio-icon">💼</div>
         <h3>MasterPlan AI</h3>
-        <p>AI-powered business plan generator with financial projections &amp; market analysis.</p>
+        <p>Générateur de plans d'affaires alimenté par l'IA avec projections financières et analyse de marché.</p>
         <div class="tech-tags">
           <span class="tag">Node.js</span><span class="tag">React</span><span class="tag">ChatGPT API</span>
         </div>
-        <a href="#" class="project-link">View Project <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="#" class="project-link">Voir le projet <i class="fa-solid fa-arrow-right"></i></a>
       </article>
       <article class="portfolio-card reveal" style="--pc:#EF4444;">
         <div class="portfolio-icon">💰</div>
-        <h3>Workforce Payroll System</h3>
-        <p>Multi-company payroll processing, taxation logic &amp; automated reporting solution.</p>
+        <h3>Système de paie Workforce</h3>
+        <p>Traitement de la paie multi-entreprises, logique fiscale et rapports automatisés.</p>
         <div class="tech-tags">
           <span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">Bootstrap</span>
         </div>
-        <a href="#" class="project-link">View Project <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="#" class="project-link">Voir le projet <i class="fa-solid fa-arrow-right"></i></a>
       </article>
       <article class="portfolio-card reveal" style="--pc:#F97316;">
         <div class="portfolio-icon">📦</div>
-        <h3>Katundu Courier System</h3>
-        <p>Parcel tracking, logistics management &amp; operational reporting platform.</p>
+        <h3>Système de messagerie Katundu</h3>
+        <p>Suivi des colis, gestion logistique et plateforme de rapports opérationnels.</p>
         <div class="tech-tags">
           <span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">JavaScript</span>
         </div>
-        <a href="#" class="project-link">View Project <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="#" class="project-link">Voir le projet <i class="fa-solid fa-arrow-right"></i></a>
       </article>
     </div>
   </div>
@@ -454,12 +442,12 @@
 <!-- WHAT YOU BUILD -->
 <section class="featured">
   <div class="container featured-inner reveal">
-    <h2>What You'll Build in ONE DAY</h2>
+    <h2>Ce que vous construirez en UNE JOURNÉE</h2>
     <div class="logo-row">
-      <div class="logo-item">✅ Complete Website</div>
-      <div class="logo-item">✅ Payment Integration</div>
-      <div class="logo-item">✅ WhatsApp Chat</div>
-      <div class="logo-item">✅ LIVE on Netlify</div>
+      <div class="logo-item">✅ Site web complet</div>
+      <div class="logo-item">✅ Intégration de paiement</div>
+      <div class="logo-item">✅ Chat WhatsApp</div>
+      <div class="logo-item">✅ EN LIGNE sur Netlify</div>
     </div>
   </div>
 </section>
@@ -469,25 +457,25 @@
   <div class="container">
     <div class="sponsor-grid">
       <div class="sponsor-content reveal">
-        <span class="eyebrow">🤝 Partner With Us</span>
-        <h2>Impart Free Skills While Growing Your <span>Card Visibility</span></h2>
-        <p class="lead">By partnering with us, you're putting your <strong class="highlight">Debit Cards</strong> and <strong class="highlight">Virtual Debit Cards</strong> directly in front of thousands of new digital entrepreneurs.</p>
-        <p class="lead">Every student we train needs a reliable method to pay for <strong class="highlight">domains</strong>, <strong class="highlight">hosting</strong>, <strong class="highlight">premium themes</strong>, and <strong class="highlight">AI tools</strong>. We actively market your card as the trusted payment solution.</p>
+        <span class="eyebrow">🤝 Devenez partenaire</span>
+        <h2>Offrez des compétences gratuites tout en augmentant la <span>visibilité de votre carte</span></h2>
+        <p class="lead">En devenant partenaire, vous placez vos <strong class="highlight">Cartes de débit</strong> et <strong class="highlight">Cartes de débit virtuelles</strong> directement devant des milliers de nouveaux entrepreneurs numériques.</p>
+        <p class="lead">Chaque étudiant que nous formons a besoin d'un moyen fiable de payer pour les <strong class="highlight">domaines</strong>, l'<strong class="highlight">hébergement</strong>, les <strong class="highlight">thèmes premium</strong> et les <strong class="highlight">outils d'IA</strong>. Nous faisons activement la promotion de votre carte comme solution de paiement de confiance.</p>
         <div class="sponsor-benefits">
-          <div class="sponsor-benefit"><i class="fa-solid fa-check-circle"></i><span>1,000+ students per session</span></div>
-          <div class="sponsor-benefit"><i class="fa-solid fa-check-circle"></i><span>800+ websites with your card</span></div>
-          <div class="sponsor-benefit"><i class="fa-solid fa-check-circle"></i><span>200+ merchant signups</span></div>
-          <div class="sponsor-benefit"><i class="fa-solid fa-check-circle"></i><span>50,000+ social impressions</span></div>
+          <div class="sponsor-benefit"><i class="fa-solid fa-check-circle"></i><span>1 000+ étudiants par session</span></div>
+          <div class="sponsor-benefit"><i class="fa-solid fa-check-circle"></i><span>800+ sites web avec votre carte</span></div>
+          <div class="sponsor-benefit"><i class="fa-solid fa-check-circle"></i><span>200+ inscriptions de commerçants</span></div>
+          <div class="sponsor-benefit"><i class="fa-solid fa-check-circle"></i><span>50 000+ impressions sociales</span></div>
         </div>
         <a href="resources/Sponsor_Pitch_K20000_Per_Session_Samuel_Katumba.pdf" class="sponsor-btn" download>
           <i class="fa-solid fa-file-pdf"></i>
-          Download Complete Proposal
+          Télécharger la proposition complète
           <i class="fa-solid fa-arrow-right"></i>
         </a>
       </div>
       <div style="display:flex;justify-content:center;align-items:center;" class="reveal">
         <div class="card-mockup">
-          <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop&q=80" alt="Bank card payment illustration" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop&q=80" alt="Illustration de paiement par carte bancaire" loading="lazy">
         </div>
       </div>
     </div>
@@ -498,17 +486,17 @@
 <section class="section" id="coaching">
   <div class="container course">
     <div class="reveal">
-      <span class="eyebrow">Personal Course</span>
-      <h2>Why Wait Years When You Can Learn in ONE DAY?</h2>
-      <p class="lead" style="margin-top:22px;">The AI revolution changed everything. What once took years of training now takes just 10 hours. We guide you step-by-step — no experience needed — to build, launch, and deploy a professional website with payment integration.</p>
-      <a class="btn" href="#contact" style="margin-top:26px;">Sign Up Now <i class="fa-solid fa-angle-right"></i></a>
+      <span class="eyebrow">Formation personnelle</span>
+      <h2>Pourquoi attendre des années quand vous pouvez apprendre en UNE JOURNÉE ?</h2>
+      <p class="lead" style="margin-top:22px;">La révolution de l'IA a tout changé. Ce qui prenait autrefois des années de formation ne prend plus que 10 heures. Nous vous guidons étape par étape — aucune expérience requise — pour construire, lancer et déployer un site web professionnel avec intégration de paiement.</p>
+      <a class="btn" href="#contact" style="margin-top:26px;">S'inscrire maintenant <i class="fa-solid fa-angle-right"></i></a>
     </div>
     <div class="course-card reveal">
-      <h3>⚡ ONE DAY. ONE WEBSITE. YOUR FUTURE.</h3>
+      <h3>⚡ UNE JOURNÉE. UN SITE WEB. VOTRE AVENIR.</h3>
       <ul class="course-meta">
-        <li><i class="fa-solid fa-clock"></i><span>10-hour intensive — From zero to professional web developer in ONE DAY</span></li>
-        <li><i class="fa-solid fa-users"></i><span>Build a complete website with payment integration &amp; WhatsApp chat</span></li>
-        <li><i class="fa-solid fa-credit-card"></i><span>100% FREE training. Deploy LIVE on Netlify. Certificate included.</span></li>
+        <li><i class="fa-solid fa-clock"></i><span>Formation intensive de 10 heures — De zéro au développeur web professionnel en UNE JOURNÉE</span></li>
+        <li><i class="fa-solid fa-users"></i><span>Construisez un site web complet avec intégration de paiement et chat WhatsApp</span></li>
+        <li><i class="fa-solid fa-credit-card"></i><span>Formation 100 % GRATUITE. Déployez en LIGNE sur Netlify. Certificat inclus.</span></li>
       </ul>
     </div>
   </div>
@@ -518,93 +506,93 @@
 <section class="section mist">
   <div class="container">
     <div class="section-heading reveal">
-      <span class="eyebrow">What I Offer</span>
-      <h2>Free Digital Skills Training — Powered by AI</h2>
+      <span class="eyebrow">Ce que je propose</span>
+      <h2>Formation gratuite en compétences numériques — Alimentée par l'IA</h2>
     </div>
     <div class="offer-grid">
       <article class="offer-card reveal">
         <i class="fa-solid fa-laptop-code"></i>
-        <h3>Web Development</h3>
-        <p>Build responsive websites and mobile apps in ONE DAY with AI — no coding experience needed.</p>
-        <a href="#contact">Learn more <i class="fa-solid fa-angle-right"></i></a>
+        <h3>Développement web</h3>
+        <p>Créez des sites web réactifs et des applications mobiles en UNE JOURNÉE avec l'IA — aucune expérience en programmation requise.</p>
+        <a href="#contact">En savoir plus <i class="fa-solid fa-angle-right"></i></a>
       </article>
       <article class="offer-card reveal">
         <i class="fa-solid fa-brain"></i>
-        <h3>AI-Powered Marketing</h3>
-        <p>Use AI tools to create content, grow your TikTok following, and drive sales.</p>
-        <a href="#contact">Learn more <i class="fa-solid fa-angle-right"></i></a>
+        <h3>Marketing alimenté par l'IA</h3>
+        <p>Utilisez les outils d'IA pour créer du contenu, développer votre audience TikTok et générer des ventes.</p>
+        <a href="#contact">En savoir plus <i class="fa-solid fa-angle-right"></i></a>
       </article>
       <article class="offer-card reveal">
         <i class="fa-solid fa-palette"></i>
-        <h3>Digital Art</h3>
-        <p>Generate professional digital art using AI tools like Midjourney and DALL-E.</p>
-        <a href="#contact">Learn more <i class="fa-solid fa-angle-right"></i></a>
+        <h3>Art numérique</h3>
+        <p>Générez des œuvres d'art numériques professionnelles à l'aide d'outils d'IA comme Midjourney et DALL-E.</p>
+        <a href="#contact">En savoir plus <i class="fa-solid fa-angle-right"></i></a>
       </article>
       <article class="offer-card reveal">
         <i class="fa-solid fa-person-chalkboard"></i>
-        <h3>Public Workshops</h3>
-        <p>Join FREE public workshops — learn alongside 1,000+ Zambians building their digital future.</p>
-        <a href="#events">Learn more <i class="fa-solid fa-angle-right"></i></a>
+        <h3>Ateliers publics</h3>
+        <p>Rejoignez des ateliers publics GRATUITS — apprenez aux côtés de 1 000+ Zambiens qui construisent leur avenir numérique.</p>
+        <a href="#events">En savoir plus <i class="fa-solid fa-angle-right"></i></a>
       </article>
       <article class="offer-card reveal">
         <i class="fa-solid fa-book-open-reader"></i>
-        <h3>Resources</h3>
-        <p>Get free access to AI prompts, templates, and deployment guides — everything to start earning.</p>
-        <a href="#resources">Learn more <i class="fa-solid fa-angle-right"></i></a>
+        <h3>Ressources</h3>
+        <p>Accédez gratuitement à des prompts IA, des modèles et des guides de déploiement — tout pour commencer à gagner de l'argent.</p>
+        <a href="#resources">En savoir plus <i class="fa-solid fa-angle-right"></i></a>
       </article>
       <article class="offer-card reveal">
         <i class="fa-solid fa-handshake"></i>
-        <h3>Sponsorship</h3>
-        <p>Partner with us for K20,000 per session and reach 1,000 students who will build websites with YOUR payment service.</p>
-        <a href="#sponsor">Learn more <i class="fa-solid fa-angle-right"></i></a>
+        <h3>Partenariat</h3>
+        <p>Devenez partenaire pour K20 000 par session et atteignez 1 000 étudiants qui construiront des sites web avec VOTRE service de paiement.</p>
+        <a href="#sponsor">En savoir plus <i class="fa-solid fa-angle-right"></i></a>
       </article>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIALS — COMPACT -->
+<!-- TESTIMONIALS -->
 <section class="testimonials-section" id="testimonials">
   <div class="container">
     <div class="testimonial-header reveal">
       <div>
-        <span class="eyebrow">Testimonials</span>
-        <h2>Real Students. Real Results.</h2>
-        <p style="color:rgba(255,255,255,.65);margin-top:10px;font-size:.95rem;">What participants say after just ONE DAY of training.</p>
+        <span class="eyebrow">Témoignages</span>
+        <h2>De vrais étudiants. De vrais résultats.</h2>
+        <p style="color:rgba(255,255,255,.65);margin-top:10px;font-size:.95rem;">Ce que les participants disent après UNE SEULE JOURNÉE de formation.</p>
       </div>
       <div style="display:flex;flex-direction:column;gap:10px;padding-top:8px;">
         <div style="display:flex;align-items:center;gap:12px;">
           <span style="font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;color:var(--peach);line-height:1;">4.9</span>
           <div>
             <div style="color:var(--peach);letter-spacing:3px;font-size:.9rem;">★★★★★</div>
-            <div style="color:rgba(255,255,255,.5);font-size:.78rem;margin-top:2px;">Average rating</div>
+            <div style="color:rgba(255,255,255,.5);font-size:.78rem;margin-top:2px;">Note moyenne</div>
           </div>
         </div>
-        <p style="color:rgba(255,255,255,.55);font-size:.83rem;line-height:1.6;max-width:280px;">From 1,000+ students trained across Zambia's Copperbelt.</p>
+        <p style="color:rgba(255,255,255,.55);font-size:.83rem;line-height:1.6;max-width:280px;">Issu de 1 000+ étudiants formés à travers le Copperbelt zambien.</p>
       </div>
     </div>
     <div class="quotes-row reveal">
       <div class="quote-card">
         <div class="quote-stars">★★★★★</div>
-        <p>"Samuel makes complex web development feel practical. By the end of the session, I understood how a website becomes a real business tool."</p>
+        <p>"Samuel rend le développement web concret. À la fin de la session, j'ai compris comment un site web devient un véritable outil commercial."</p>
         <div class="quote-person">
           <div class="quote-avatar">L</div>
-          <div><div class="quote-name">Linda M.</div><div class="quote-role">Entrepreneur</div></div>
+          <div><div class="quote-name">Linda M.</div><div class="quote-role">Entrepreneure</div></div>
         </div>
       </div>
       <div class="quote-card">
         <div class="quote-stars">★★★★★</div>
-        <p>"The training connects coding, AI, payment systems, and marketing in a way that is immediately useful for small businesses."</p>
+        <p>"La formation relie la programmation, l'IA, les systèmes de paiement et le marketing d'une manière immédiatement utile pour les petites entreprises."</p>
         <div class="quote-person">
           <div class="quote-avatar">C</div>
-          <div><div class="quote-name">Chanda K.</div><div class="quote-role">Business Owner</div></div>
+          <div><div class="quote-name">Chanda K.</div><div class="quote-role">Chef d'entreprise</div></div>
         </div>
       </div>
       <div class="quote-card">
         <div class="quote-stars">★★★★★</div>
-        <p>"His teaching style is structured, patient, and focused on what students can actually build and deploy on the same day."</p>
+        <p>"Son style d'enseignement est structuré, patient et axé sur ce que les étudiants peuvent réellement construire et déployer le même jour."</p>
         <div class="quote-person">
           <div class="quote-avatar">T</div>
-          <div><div class="quote-name">Thandi N.</div><div class="quote-role">Student</div></div>
+          <div><div class="quote-name">Thandi N.</div><div class="quote-role">Étudiante</div></div>
         </div>
       </div>
     </div>
@@ -615,39 +603,39 @@
 <section class="section" id="events">
   <div class="container">
     <div class="section-heading reveal">
-      <span class="eyebrow">Upcoming Events</span>
-      <h2>FREE Bootcamps — Limited Spots Available</h2>
+      <span class="eyebrow">Événements à venir</span>
+      <h2>Bootcamps GRATUITS — Places limitées disponibles</h2>
     </div>
     <div class="events">
       <article class="event-row reveal">
-        <div class="event-date">04<span>July 2025</span></div>
+        <div class="event-date">04<span>Juillet 2025</span></div>
         <div>
-          <h3>⚡ ONE-DAY BOOTCAMP: From Zero to Professional Web Developer</h3>
-          <p>8:00 AM – 9:00 PM · 1,000 FREE spots available</p>
+          <h3>⚡ BOOTCAMP D'UNE JOURNÉE : De zéro au développeur web professionnel</h3>
+          <p>8:00 – 21:00 · 1 000 places gratuites disponibles</p>
         </div>
-        <span class="event-badge">FREE</span>
+        <span class="event-badge">GRATUIT</span>
       </article>
       <article class="event-row reveal">
-        <div class="event-date">11<span>July 2025</span></div>
+        <div class="event-date">11<span>Juillet 2025</span></div>
         <div>
-          <h3>🎯 AI-Powered Marketing Masterclass</h3>
-          <p>8:00 AM – 9:00 PM · Learn AI content creation &amp; TikTok growth</p>
+          <h3>🎯 Masterclass de marketing alimenté par l'IA</h3>
+          <p>8:00 – 21:00 · Apprenez la création de contenu IA et la croissance sur TikTok</p>
         </div>
-        <span class="event-badge">FREE</span>
+        <span class="event-badge">GRATUIT</span>
       </article>
       <article class="event-row reveal">
-        <div class="event-date">18<span>July 2025</span></div>
+        <div class="event-date">18<span>Juillet 2025</span></div>
         <div>
-          <h3>🎨 AI-Powered Digital Art Bootcamp</h3>
-          <p>8:00 AM – 9:00 PM · Create professional art with AI tools</p>
+          <h3>🎨 Bootcamp d'art numérique alimenté par l'IA</h3>
+          <p>8:00 – 21:00 · Créez des œuvres d'art professionnelles avec des outils d'IA</p>
         </div>
-        <span class="event-badge">FREE</span>
+        <span class="event-badge">GRATUIT</span>
       </article>
     </div>
     <div class="events-action reveal">
-      <p class="lead">All training is 100% FREE — sponsored by leading payment partners. Secure your spot before they fill up!</p>
-      <a class="btn" href="https://wa.me/260966658181?text=Hi%20Samuel%2C%20I%20want%20to%20join%20the%20FREE%20ONE-DAY%20bootcamp!%20Please%20send%20me%20details." target="_blank" rel="noopener">
-        Join Our Community <i class="fa-brands fa-whatsapp"></i>
+      <p class="lead">Toute la formation est 100 % GRATUITE — parrainée par des partenaires de paiement de premier plan. Réservez votre place avant qu'elles ne soient toutes prises !</p>
+      <a class="btn" href="https://wa.me/260966658181?text=Bonjour%20Samuel%2C%20je%20veux%20rejoindre%20le%20bootcamp%20GRATUIT%20D'UNE%20JOURN%C3%89E%20!%20Veuillez%20m'envoyer%20les%20d%C3%A9tails." target="_blank" rel="noopener">
+        Rejoindre notre communauté <i class="fa-brands fa-whatsapp"></i>
       </a>
     </div>
   </div>
@@ -656,10 +644,10 @@
 <!-- FOCUS BANNER -->
 <section class="focus">
   <div class="container reveal">
-    <span class="eyebrow">Your Digital Future</span>
-    <h2>Your Digital Future Starts in ONE DAY</h2>
-    <p class="lead">The AI revolution has made web development accessible to everyone. What once took years now takes just 10 hours — and we're giving it to you 100% FREE.</p>
-    <a class="btn" href="#contact">Join Free Bootcamp <i class="fa-solid fa-angle-right"></i></a>
+    <span class="eyebrow">Votre avenir numérique</span>
+    <h2>Votre avenir numérique commence en UNE JOURNÉE</h2>
+    <p class="lead">La révolution de l'IA a rendu le développement web accessible à tous. Ce qui prenait des années ne prend plus que 10 heures — et nous vous l'offrons 100 % GRATUITEMENT.</p>
+    <a class="btn" href="#contact">Rejoindre le bootcamp gratuit <i class="fa-solid fa-angle-right"></i></a>
   </div>
 </section>
 
@@ -667,65 +655,61 @@
 <section class="section mist" id="resources">
   <div class="container">
     <div class="section-heading reveal">
-      <span class="eyebrow">Free Resources</span>
-      <h2>Start Your AI Journey Today</h2>
+      <span class="eyebrow">Ressources gratuites</span>
+      <h2>Commencez votre parcours IA dès aujourd'hui</h2>
     </div>
     <div class="resources-grid">
 
-      <!-- VIDEO with YouTube thumbnail auto-fetched from YouTube -->
+      <!-- VIDEO -->
       <article class="resource reveal">
-        <a href="https://youtu.be/qr4H4N2FkE8" target="_blank" rel="noopener noreferrer" class="resource-thumb" aria-label="Watch on YouTube">
-          <img
-            src="https://img.youtube.com/vi/qr4H4N2FkE8/hqdefault.jpg"
-            alt="One-Day Bootcamp Explained thumbnail"
-            loading="lazy"
-          >
+        <a href="https://youtu.be/qr4H4N2FkE8" target="_blank" rel="noopener noreferrer" class="resource-thumb" aria-label="Regarder sur YouTube">
+          <img src="https://img.youtube.com/vi/qr4H4N2FkE8/hqdefault.jpg" alt="Miniature du bootcamp d'une journée expliqué" loading="lazy">
           <div class="play-btn">
             <div class="play-circle"><i class="fa-brands fa-youtube"></i></div>
           </div>
           <span class="yt-label">YouTube</span>
         </a>
         <div class="resource-body">
-          <h3>🎥 One-Day Bootcamp Explained</h3>
-          <p>Watch Samuel explain everything you'll learn — from zero to professional web developer in just 10 hours!</p>
+          <h3>🎥 Bootcamp d'une journée expliqué</h3>
+          <p>Regardez Samuel expliquer tout ce que vous apprendrez — de zéro au développeur web professionnel en seulement 10 heures !</p>
           <div class="resource-meta">
-            <span class="resource-tag">🎬 Video</span>
-            <span class="resource-tag">10-Hour Guide</span>
+            <span class="resource-tag">🎬 Vidéo</span>
+            <span class="resource-tag">Guide de 10 h</span>
           </div>
           <a href="https://youtu.be/qr4H4N2FkE8" class="resource-link" target="_blank" rel="noopener noreferrer">
-            <i class="fa-solid fa-play"></i> Watch on YouTube <i class="fa-solid fa-arrow-right"></i>
+            <i class="fa-solid fa-play"></i> Regarder sur YouTube <i class="fa-solid fa-arrow-right"></i>
           </a>
         </div>
       </article>
 
       <!-- Prompt download -->
       <article class="resource reveal">
-        <img class="resource-img" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80" alt="Web design workspace" loading="lazy">
+        <img class="resource-img" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80" alt="Espace de travail de conception web" loading="lazy">
         <div class="resource-body">
-          <h3>🚀 Full Personal Website Prompt</h3>
-          <p>Download this AI prompt to generate a complete single-page personal agency website in ONE DAY!</p>
+          <h3>🚀 Prompt pour site web personnel complet</h3>
+          <p>Téléchargez ce prompt IA pour générer un site web d'agence personnel complet en UNE JOURNÉE !</p>
           <div class="resource-meta">
-            <span class="resource-tag">📝 TXT File</span>
-            <span class="resource-tag">⚡ One-Day Build</span>
+            <span class="resource-tag">📝 Fichier TXT</span>
+            <span class="resource-tag">⚡ Construction en 1 jour</span>
           </div>
           <a href="resources/personal-website-prompt.txt" class="resource-link" download>
-            <i class="fa-solid fa-download"></i> Download Prompt <i class="fa-solid fa-arrow-right"></i>
+            <i class="fa-solid fa-download"></i> Télécharger le prompt <i class="fa-solid fa-arrow-right"></i>
           </a>
         </div>
       </article>
 
       <!-- PDF cheat sheet -->
       <article class="resource reveal">
-        <img class="resource-img" src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=900&q=80" alt="Code on screen" loading="lazy">
+        <img class="resource-img" src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=900&q=80" alt="Code à l'écran" loading="lazy">
         <div class="resource-body">
-          <h3>📄 Web Design Cheat Sheet</h3>
-          <p>Essential HTML tags, CSS properties, and JavaScript basics — all in one PDF. Perfect quick reference.</p>
+          <h3>📄 Aide-mémoire de conception web</h3>
+          <p>Les balises HTML essentielles, les propriétés CSS et les bases de JavaScript — tout en un seul PDF. Référence rapide parfaite.</p>
           <div class="resource-meta">
             <span class="resource-tag">📄 PDF</span>
-            <span class="resource-tag">🎯 Quick Reference</span>
+            <span class="resource-tag">🎯 Référence rapide</span>
           </div>
           <a href="resources/Web_Design_Cheat_Sheet_Samuel_Katumba.pdf" class="resource-link" download>
-            <i class="fa-solid fa-download"></i> Download PDF <i class="fa-solid fa-arrow-right"></i>
+            <i class="fa-solid fa-download"></i> Télécharger le PDF <i class="fa-solid fa-arrow-right"></i>
           </a>
         </div>
       </article>
@@ -733,11 +717,11 @@
     </div>
 
     <div class="sponsor-pitch-download reveal">
-      <h3>🤝 Partner With Us</h3>
-      <p>Download the complete sponsorship proposal to learn how your payment card can reach 1,000+ digital entrepreneurs per session.</p>
+      <h3>🤝 Devenez partenaire</h3>
+      <p>Téléchargez la proposition de parrainage complète pour apprendre comment votre carte de paiement peut atteindre 1 000+ entrepreneurs numériques par session.</p>
       <a href="resources/Sponsor_Pitch_K20000_Per_Session_Samuel_Katumba.pdf" class="sponsor-btn" download>
         <i class="fa-solid fa-file-pdf"></i>
-        Download Sponsor Pitch (K20,000/Session)
+        Télécharger la proposition (K20 000/Session)
         <i class="fa-solid fa-arrow-right"></i>
       </a>
     </div>
@@ -749,24 +733,24 @@
   <div class="container contact-grid">
     <div class="reveal">
       <span class="eyebrow">Contact</span>
-      <h2>🚀 Join 1,000+ Zambians Building Their Digital Future</h2>
-      <p class="lead" style="margin-top:18px;">The AI revolution has made web development accessible to everyone. Join our free community and learn to build in ONE DAY — no experience needed. Limited spots!</p>
+      <h2>🚀 Rejoignez 1 000+ Zambiens qui construisent leur avenir numérique</h2>
+      <p class="lead" style="margin-top:18px;">La révolution de l'IA a rendu le développement web accessible à tous. Rejoignez notre communauté gratuite et apprenez à construire en UNE JOURNÉE — aucune expérience requise. Places limitées !</p>
       <div class="contact-action">
-        <a class="btn" href="https://wa.me/260966658181?text=Hi%20Samuel%2C%20I%20want%20to%20join%20the%20FREE%20ONE-DAY%20bootcamp!%20Please%20send%20me%20details." target="_blank" rel="noopener">
-          Join Free Community <i class="fa-brands fa-whatsapp"></i>
+        <a class="btn" href="https://wa.me/260966658181?text=Bonjour%20Samuel%2C%20je%20veux%20rejoindre%20le%20bootcamp%20GRATUIT%20D'UNE%20JOURN%C3%89E%20!%20Veuillez%20m'envoyer%20les%20d%C3%A9tails." target="_blank" rel="noopener">
+          Rejoindre la communauté gratuite <i class="fa-brands fa-whatsapp"></i>
         </a>
       </div>
     </div>
     <div class="contact-info-box reveal">
-      <h3>Get In Touch</h3>
+      <h3>Contactez-nous</h3>
       <div class="contact-list">
         <div class="contact-item">
           <i class="fa-solid fa-location-dot"></i>
-          <div><strong>Address</strong><p style="color:var(--muted);font-size:.9rem;margin-top:2px;">Room 105, Mukuba Pension House, Kitwe</p></div>
+          <div><strong>Adresse</strong><p style="color:var(--muted);font-size:.9rem;margin-top:2px;">Salle 105, Mukuba Pension House, Kitwe</p></div>
         </div>
         <div class="contact-item">
           <i class="fa-solid fa-phone"></i>
-          <div><strong>Phone</strong><p style="color:var(--muted);font-size:.9rem;margin-top:2px;">0966 658181 / 0977 658181</p></div>
+          <div><strong>Téléphone</strong><p style="color:var(--muted);font-size:.9rem;margin-top:2px;">0966 658181 / 0977 658181</p></div>
         </div>
         <div class="contact-item">
           <i class="fa-solid fa-envelope"></i>
@@ -785,11 +769,11 @@
 
 <footer>
   <div class="container">
-    <p>Copyright © <span id="year"></span> <strong>Samuel Katumba</strong> · 🚀 Empowering Zambia's Digital Future with FREE AI-Powered Training</p>
+    <p>Copyright © <span id="year"></span> <strong>Samuel Katumba</strong> · 🚀 Autonomiser l'avenir numérique de la Zambie grâce à une formation gratuite alimentée par l'IA</p>
   </div>
 </footer>
 
-<a class="whatsapp-float" href="https://wa.me/260966658181?text=Hi%20Samuel%2C%20I%20want%20to%20join%20the%20FREE%20ONE-DAY%20bootcamp!%20Please%20send%20me%20details." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+<a class="whatsapp-float" href="https://wa.me/260966658181?text=Bonjour%20Samuel%2C%20je%20veux%20rejoindre%20le%20bootcamp%20GRATUIT%20D'UNE%20JOURN%C3%89E%20!%20Veuillez%20m'envoyer%20les%20d%C3%A9tails." target="_blank" rel="noopener" aria-label="Discuter sur WhatsApp">
   <i class="fa-brands fa-whatsapp"></i>
 </a>
 
