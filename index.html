@@ -30,6 +30,8 @@
       --shadow-sm: 0 4px 20px rgba(49,41,67,0.08);
       --shadow: 0 16px 50px rgba(49,41,67,0.13);
       --shadow-lg: 0 30px 80px rgba(49,41,67,0.18);
+      --gold: #f59e0b;
+      --gold-dark: #d97706;
     }
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -194,28 +196,308 @@
     .quote-name { font-weight: 700; color: var(--white); font-size: .9rem; line-height: 1.2; }
     .quote-role { font-size: .78rem; color: rgba(255,255,255,.5); }
 
-    /* EVENTS */
-    .events { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
-    .event-row { display: grid; grid-template-columns: 120px minmax(0,1fr) auto; gap: 24px; align-items: center; padding: 22px 28px; background: var(--paper); transition: background .2s; }
-    .event-row:hover { background: var(--white); }
-    .event-date { color: var(--plum); font-family: "Playfair Display", serif; font-size: 1.6rem; font-weight: 700; line-height: 1.1; }
-    .event-date span { display: block; font-size: .72rem; font-family: "DM Sans",sans-serif; font-weight: 600; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; margin-top: 2px; }
-    .event-row h3 { font-size: 1rem; font-weight: 700; font-family: "DM Sans",sans-serif; color: var(--ink); margin-bottom: 3px; }
-    .event-row p { color: var(--muted); font-size: .85rem; font-weight: 500; }
-    .event-badge { padding: 4px 12px; background: #e6f9ee; color: #16a34a; border-radius: 99px; font-size: .72rem; font-weight: 800; white-space: nowrap; }
-    .events-action { display: grid; justify-items: center; gap: 16px; max-width: 680px; margin: 28px auto 0; text-align: center; }
+    /* EVENTS - GRID CARDS */
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 10px;
+    }
+
+    .event-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(49, 41, 67, 0.07);
+      height: 100%;
+    }
+
+    .event-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
+    }
+
+    .event-card-image {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      background: var(--plum);
+    }
+
+    .event-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .event-card:hover .event-card-image img {
+      transform: scale(1.05);
+    }
+
+    .event-card-badge {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      padding: 4px 14px;
+      border-radius: 99px;
+      background: #22c55e;
+      color: var(--white);
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      box-shadow: 0 4px 12px rgba(34, 197, 94, 0.35);
+    }
+
+    .event-card-body {
+      padding: 22px 24px 26px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .event-card-date {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .event-day {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--plum);
+      line-height: 1;
+    }
+
+    .event-month {
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .event-card-body h3 {
+      font-family: "DM Sans", Arial, sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .event-card-body p {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      margin-bottom: 16px;
+      flex: 1;
+    }
+
+    .event-card-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+
+    .event-card-meta span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+
+    .event-card-meta i {
+      color: var(--peach-dark);
+      width: 16px;
+    }
+
+    .event-card-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: var(--radius-sm);
+      background: var(--peach);
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 0.88rem;
+      transition: background 0.2s ease, transform 0.2s ease, gap 0.2s ease;
+      text-align: center;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .event-card-btn:hover {
+      background: var(--peach-dark);
+      transform: translateY(-2px);
+      gap: 12px;
+    }
 
     /* FOCUS BANNER */
     .focus { position: relative; min-height: 460px; display: grid; align-items: center; color: var(--white); background: linear-gradient(100deg, rgba(42,34,64,.94), rgba(63,54,88,.65)), url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1800&q=80") center / cover; }
     .focus h2 { max-width: 760px; color: var(--white); font-size: clamp(2rem,4vw,3.5rem); }
     .focus .lead { max-width: 580px; margin: 20px 0 26px; color: rgba(255,255,255,.8); }
 
+    /* ===== COACHING & COLLABORATION ===== */
+    .coaching-collab {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      color: var(--white);
+      padding: 100px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .coaching-collab::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 10% 30%, rgba(245, 158, 11, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 90% 70%, rgba(229, 173, 130, 0.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(37, 211, 102, 0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .coaching-collab .container {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .coaching-content h2 {
+      color: var(--white);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      margin-bottom: 24px;
+    }
+
+    .coaching-content h2 span {
+      color: var(--gold);
+    }
+
+    .coaching-content .lead {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 1.1rem;
+      line-height: 1.9;
+      margin-bottom: 16px;
+    }
+
+    .coaching-content .highlight-gold {
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    .coaching-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 28px 0 32px;
+    }
+
+    .coaching-feature {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.95rem;
+    }
+
+    .coaching-feature i {
+      color: var(--gold);
+      font-size: 1.1rem;
+      width: 20px;
+    }
+
+    .coaching-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 40px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: var(--ink);
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 8px 30px rgba(245, 158, 11, 0.35);
+      text-decoration: none;
+    }
+
+    .coaching-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(245, 158, 11, 0.5);
+    }
+
+    .coaching-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .coaching-image-mockup {
+      width: 100%;
+      max-width: 480px;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      border: 2px solid rgba(245, 158, 11, 0.2);
+    }
+
+    .coaching-image-mockup:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
+      border-color: rgba(245, 158, 11, 0.4);
+    }
+
+    .coaching-image-mockup img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .coaching-price-tag {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 6px 18px;
+      border-radius: 99px;
+      background: rgba(245, 158, 11, 0.2);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      color: var(--gold);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .coaching-price-tag strong {
+      font-size: 1.2rem;
+    }
+
     /* RESOURCES */
     .resources-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
     .resource { display: flex; flex-direction: column; background: var(--white); box-shadow: var(--shadow-sm); border-radius: var(--radius-lg); overflow: hidden; transition: transform .28s, box-shadow .28s; border: 1px solid rgba(49,41,67,.07); }
     .resource:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
 
-    /* VIDEO THUMBNAIL */
     .resource-thumb { position: relative; width: 100%; height: 190px; overflow: hidden; background: #000; cursor: pointer; display: block; }
     .resource-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s, opacity .4s; }
     .resource-thumb:hover img { transform: scale(1.04); opacity: .85; }
@@ -233,7 +515,6 @@
     .resource-link { display: inline-flex; align-items: center; gap: 8px; color: var(--plum); font-weight: 700; font-size: .88rem; transition: color .2s, gap .2s; }
     .resource-link:hover { color: var(--peach-dark); gap: 12px; }
 
-    /* SPONSOR PITCH DOWNLOAD */
     .sponsor-pitch-download { margin-top: 52px; padding: 40px; background: linear-gradient(135deg, var(--plum), var(--plum-dark)); border-radius: var(--radius-lg); color: var(--white); text-align: center; }
     .sponsor-pitch-download h3 { color: var(--white); margin-bottom: 12px; font-size: 1.5rem; }
     .sponsor-pitch-download p { color: rgba(255,255,255,.82); max-width: 660px; margin: 0 auto 22px; font-size: 1rem; }
@@ -272,32 +553,54 @@
       .testimonial-header { grid-template-columns: 1fr; }
       .quotes-row { grid-template-columns: 1fr; }
       .offer-grid, .resources-grid { grid-template-columns: repeat(2,1fr); }
-      .event-row { grid-template-columns: 80px minmax(0,1fr); }
-      .event-row .event-badge { display: none; }
       .sponsor-grid { grid-template-columns: 1fr; gap: 40px; }
       .hero-stat-row { gap: 24px; }
+      .events-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+      .coaching-collab .container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .coaching-content {
+        order: 2;
+      }
+      .coaching-image {
+        order: 1;
+      }
+      .coaching-features {
+        grid-template-columns: 1fr;
+      }
+      .coaching-image-mockup {
+        max-width: 360px;
+      }
     }
     @media (max-width: 640px) {
       .section { padding: 68px 0; }
       .hero { min-height: 94vh; padding-top: 100px; }
       .hero::after { display: none; }
       .hero-stat-row { flex-wrap: wrap; gap: 18px; }
-      .portfolio-grid, .offer-grid, .resources-grid { grid-template-columns: 1fr; }
-      .event-row { grid-template-columns: 1fr; }
-      .event-date { font-size: 1.2rem; }
+      .portfolio-grid, .offer-grid, .resources-grid, .events-grid { grid-template-columns: 1fr; gap: 20px; }
       .contact-grid { grid-template-columns: 1fr; }
       .sponsor-section { padding: 68px 0; }
       .featured-inner { flex-direction: column; gap: 24px; }
       .logo-row { flex-direction: column; }
       .testimonials-section { padding: 56px 0; }
+      .event-card-image { height: 170px; }
+      .event-card-body { padding: 18px 20px 22px; }
+      .event-day { font-size: 1.4rem; }
+      .coaching-collab { padding: 68px 0; }
+      .coaching-image-mockup { max-width: 280px; }
+      .coaching-features { grid-template-columns: 1fr; }
     }
-
     @media (max-width: 560px) {
       .language-prompt { align-items: stretch; flex-direction: column; gap: 12px; }
       .language-prompt-actions { width: 100%; }
       .prompt-language { flex: 1; }
       .language-option { min-width: 32px; padding: 0 6px; }
-    }  </style>
+    }
+  </style>
 </head>
 <body>
 
@@ -348,7 +651,7 @@
       <h1>Build Websites &amp; Apps in <em>ONE DAY</em> — 100% Free</h1>
       <p class="lead">What once took years of university training now takes just 10 hours with AI. No experience needed. Join thousands of Zambians already building their digital future.</p>
       <div class="hero-actions">
-        <a class="btn" href="#contact">Join Free Bootcamp <i class="fa-solid fa-angle-right"></i></a>
+        <a class="btn" href="#events">Join Free Bootcamp <i class="fa-solid fa-angle-right"></i></a>
         <a class="btn outline" href="#events">View Events <i class="fa-solid fa-calendar-days"></i></a>
       </div>
       <div class="hero-stat-row">
@@ -376,7 +679,7 @@
         <span class="chip">MCA in AI — Amity (pursuing)</span>
         <span class="chip">PG Dip Teaching — Copperstone</span>
       </div>
-      <p class="lead">Samuel Katumba is a Zambian entrepreneur, university lecturer, and digital skills trainer based in Kitwe. He has built multiple commercial-level systems — from university management portals to AI-powered election platforms — and is on a mission to train 10,000 Zambians for FREE.</p>
+      <p class="lead">Samuel Katumba is a Zambian entrepreneur, university lecturer, and digital skills trainer based in Kitwe. He has built multiple commercial-level systems — from university management portals to AI-powered election platforms — and is on a mission to train 100,000 Zambians for FREE.</p>
       <p style="margin-top:14px;color:var(--muted);font-size:.95rem;line-height:1.8;">Once upon a time, building a website required years of training. That world no longer exists. Today, with AI, anyone can build and launch a professional site in ONE DAY. Samuel believes the AI revolution is the great equalizer — and he's proving it, one bootcamp at a time.</p>
       <p class="signature">Samuel Katumba</p>
       <a class="btn" href="#coaching" style="margin-top:20px;">Learn more <i class="fa-solid fa-angle-right"></i></a>
@@ -501,7 +804,7 @@
       <span class="eyebrow">Personal Course</span>
       <h2>Why Wait Years When You Can Learn in ONE DAY?</h2>
       <p class="lead" style="margin-top:22px;">The AI revolution changed everything. What once took years of training now takes just 10 hours. We guide you step-by-step — no experience needed — to build, launch, and deploy a professional website with payment integration.</p>
-      <a class="btn" href="#contact" style="margin-top:26px;">Sign Up Now <i class="fa-solid fa-angle-right"></i></a>
+      <a class="btn" href="#events" style="margin-top:26px;">Sign Up Now <i class="fa-solid fa-angle-right"></i></a>
     </div>
     <div class="course-card reveal">
       <h3>⚡ ONE DAY. ONE WEBSITE. YOUR FUTURE.</h3>
@@ -526,19 +829,19 @@
         <i class="fa-solid fa-laptop-code"></i>
         <h3>Web Development</h3>
         <p>Build responsive websites and mobile apps in ONE DAY with AI — no coding experience needed.</p>
-        <a href="#contact">Learn more <i class="fa-solid fa-angle-right"></i></a>
+        <a href="#events">Learn more <i class="fa-solid fa-angle-right"></i></a>
       </article>
       <article class="offer-card reveal">
         <i class="fa-solid fa-brain"></i>
         <h3>AI-Powered Marketing</h3>
         <p>Use AI tools to create content, grow your TikTok following, and drive sales.</p>
-        <a href="#contact">Learn more <i class="fa-solid fa-angle-right"></i></a>
+        <a href="#events">Learn more <i class="fa-solid fa-angle-right"></i></a>
       </article>
       <article class="offer-card reveal">
         <i class="fa-solid fa-palette"></i>
         <h3>Digital Art</h3>
         <p>Generate professional digital art using AI tools like Midjourney and DALL-E.</p>
-        <a href="#contact">Learn more <i class="fa-solid fa-angle-right"></i></a>
+        <a href="#events">Learn more <i class="fa-solid fa-angle-right"></i></a>
       </article>
       <article class="offer-card reveal">
         <i class="fa-solid fa-person-chalkboard"></i>
@@ -562,7 +865,7 @@
   </div>
 </section>
 
-<!-- TESTIMONIALS — COMPACT -->
+<!-- TESTIMONIALS -->
 <section class="testimonials-section" id="testimonials">
   <div class="container">
     <div class="testimonial-header reveal">
@@ -611,44 +914,123 @@
   </div>
 </section>
 
-<!-- EVENTS -->
+<!-- ===== EVENTS SECTION ===== -->
 <section class="section" id="events">
   <div class="container">
     <div class="section-heading reveal">
       <span class="eyebrow">Upcoming Events</span>
       <h2>FREE Bootcamps — Limited Spots Available</h2>
+      <p style="color: var(--muted); margin-top: 12px; font-size: 1.05rem;">Choose your path. Master your craft. Build your future.</p>
     </div>
-    <div class="events">
-      <article class="event-row reveal">
-        <div class="event-date">04<span>July 2025</span></div>
-        <div>
-          <h3>⚡ ONE-DAY BOOTCAMP: From Zero to Professional Web Developer</h3>
-          <p>8:00 AM – 9:00 PM · 1,000 FREE spots available</p>
+
+    <div class="events-grid">
+      <!-- Event Card 1: Web Development -->
+      <article class="event-card reveal">
+        <div class="event-card-image">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80" alt="Web Development Bootcamp" loading="lazy">
+          <div class="event-card-badge">FREE</div>
         </div>
-        <span class="event-badge">FREE</span>
-      </article>
-      <article class="event-row reveal">
-        <div class="event-date">11<span>July 2025</span></div>
-        <div>
-          <h3>🎯 AI-Powered Marketing Masterclass</h3>
-          <p>8:00 AM – 9:00 PM · Learn AI content creation &amp; TikTok growth</p>
+        <div class="event-card-body">
+          <div class="event-card-date">
+            <span class="event-day">04</span>
+            <span class="event-month">July 2025</span>
+          </div>
+          <h3>⚡ Web Development Masterclass</h3>
+          <p>From zero to professional web developer in ONE DAY. Build a complete website with payment integration and WhatsApp chat.</p>
+          <div class="event-card-meta">
+            <span><i class="fa-regular fa-clock"></i> 10:00 AM – 9:00 PM</span>
+            <span><i class="fa-regular fa-user"></i> 1,000 spots</span>
+          </div>
+          <a href="https://chat.whatsapp.com/JvvmETWUPlUK9YF4PG53ME" class="event-card-btn" target="_blank" rel="noopener">
+            Reserve Your Spot <i class="fa-solid fa-arrow-right"></i>
+          </a>
         </div>
-        <span class="event-badge">FREE</span>
       </article>
-      <article class="event-row reveal">
-        <div class="event-date">18<span>July 2025</span></div>
-        <div>
+
+      <!-- Event Card 2: Digital Marketing -->
+      <article class="event-card reveal">
+        <div class="event-card-image">
+          <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&w=900&q=80" alt="Digital Marketing Masterclass" loading="lazy">
+          <div class="event-card-badge">FREE</div>
+        </div>
+        <div class="event-card-body">
+          <div class="event-card-date">
+            <span class="event-day">11</span>
+            <span class="event-month">July 2025</span>
+          </div>
+          <h3>📊 AI-Powered Marketing Masterclass</h3>
+          <p>Learn AI content creation, TikTok growth strategies, email marketing automation, and sales funnel optimization.</p>
+          <div class="event-card-meta">
+            <span><i class="fa-regular fa-clock"></i> 10:00 AM – 9:00 PM</span>
+            <span><i class="fa-regular fa-user"></i> 1,000 spots</span>
+          </div>
+          <a href="https://chat.whatsapp.com/JvvmETWUPlUK9YF4PG53ME" class="event-card-btn" target="_blank" rel="noopener">
+            Reserve Your Spot <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </article>
+
+      <!-- Event Card 3: Digital Art -->
+      <article class="event-card reveal">
+        <div class="event-card-image">
+          <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&w=900&q=80" alt="Digital Art Bootcamp" loading="lazy">
+          <div class="event-card-badge">FREE</div>
+        </div>
+        <div class="event-card-body">
+          <div class="event-card-date">
+            <span class="event-day">18</span>
+            <span class="event-month">July 2025</span>
+          </div>
           <h3>🎨 AI-Powered Digital Art Bootcamp</h3>
-          <p>8:00 AM – 9:00 PM · Create professional art with AI tools</p>
+          <p>Generate professional digital art using Midjourney, DALL-E, and Stable Diffusion. Create stunning visuals for your brand.</p>
+          <div class="event-card-meta">
+            <span><i class="fa-regular fa-clock"></i> 10:00 AM – 9:00 PM</span>
+            <span><i class="fa-regular fa-user"></i> 1,000 spots</span>
+          </div>
+          <a href="https://chat.whatsapp.com/EA7i6cUcLKXFqnKVp6P4o0" class="event-card-btn" target="_blank" rel="noopener">
+            Reserve Your Spot <i class="fa-solid fa-arrow-right"></i>
+          </a>
         </div>
-        <span class="event-badge">FREE</span>
       </article>
     </div>
-    <div class="events-action reveal">
-      <p class="lead">All training is 100% FREE — sponsored by leading payment partners. Secure your spot before they fill up!</p>
-      <a class="btn" href="https://wa.me/260966658181?text=Hi%20Samuel%2C%20I%20want%20to%20join%20the%20FREE%20ONE-DAY%20bootcamp!%20Please%20send%20me%20details." target="_blank" rel="noopener">
-        Join Our Community <i class="fa-brands fa-whatsapp"></i>
-      </a>
+  </div>
+</section>
+
+<!-- ===== COACHING & COLLABORATION ===== -->
+<section class="coaching-collab" id="coaching-collab">
+  <div class="container">
+    <div class="coaching-content reveal">
+      <span class="eyebrow" style="color: var(--gold); border-color: rgba(245, 158, 11, 0.4); background: rgba(245, 158, 11, 0.12);">🚀 Professional Collaboration</span>
+      <h2>Have a Difficult &amp; Demanding <span>Software Project</span>?</h2>
+      <p class="lead">
+        Samuel Katumba is ready to answer the call and join you in your professional project, bringing to the table <strong class="highlight-gold">extensive experience</strong> and <strong class="highlight-gold">practical knowledge</strong> in the latest technologies.
+      </p>
+      <p class="lead" style="font-size: 1rem; color: rgba(255,255,255,0.7);">
+        From system architecture to deployment, Samuel delivers enterprise-grade solutions that solve real business problems.
+      </p>
+      <div class="coaching-features">
+        <div class="coaching-feature"><i class="fa-solid fa-check-circle"></i><span>Full-stack development</span></div>
+        <div class="coaching-feature"><i class="fa-solid fa-check-circle"></i><span>AI &amp; Machine Learning</span></div>
+        <div class="coaching-feature"><i class="fa-solid fa-check-circle"></i><span>System architecture</span></div>
+        <div class="coaching-feature"><i class="fa-solid fa-check-circle"></i><span>Enterprise solutions</span></div>
+        <div class="coaching-feature"><i class="fa-solid fa-check-circle"></i><span>Cloud deployment</span></div>
+        <div class="coaching-feature"><i class="fa-solid fa-check-circle"></i><span>Team mentoring</span></div>
+      </div>
+      <div>
+        <span class="coaching-price-tag">Starting from <strong>ZMW 250,000</strong></span>
+      </div>
+      <div style="margin-top: 20px;">
+        <a href="#contact" class="coaching-cta">
+          <i class="fa-solid fa-handshake"></i>
+          Let's Build Together
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+    <div class="coaching-image reveal">
+      <div class="coaching-image-mockup">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop&q=80" alt="Software development collaboration" loading="lazy">
+      </div>
     </div>
   </div>
 </section>
@@ -659,7 +1041,7 @@
     <span class="eyebrow">Your Digital Future</span>
     <h2>Your Digital Future Starts in ONE DAY</h2>
     <p class="lead">The AI revolution has made web development accessible to everyone. What once took years now takes just 10 hours — and we're giving it to you 100% FREE.</p>
-    <a class="btn" href="#contact">Join Free Bootcamp <i class="fa-solid fa-angle-right"></i></a>
+    <a class="btn" href="#events">Join Free Bootcamp <i class="fa-solid fa-angle-right"></i></a>
   </div>
 </section>
 
@@ -749,11 +1131,11 @@
   <div class="container contact-grid">
     <div class="reveal">
       <span class="eyebrow">Contact</span>
-      <h2>🚀 Join 1,000+ Zambians Building Their Digital Future</h2>
+      <h2>🚀 Join 10,000+ Zambians Building Their Digital Future</h2>
       <p class="lead" style="margin-top:18px;">The AI revolution has made web development accessible to everyone. Join our free community and learn to build in ONE DAY — no experience needed. Limited spots!</p>
       <div class="contact-action">
-        <a class="btn" href="https://wa.me/260966658181?text=Hi%20Samuel%2C%20I%20want%20to%20join%20the%20FREE%20ONE-DAY%20bootcamp!%20Please%20send%20me%20details." target="_blank" rel="noopener">
-          Join Free Community <i class="fa-brands fa-whatsapp"></i>
+        <a class="btn" href="#events">
+          Join Free Community <i class="fa-solid fa-arrow-right"></i>
         </a>
       </div>
     </div>
@@ -793,7 +1175,6 @@
   <i class="fa-brands fa-whatsapp"></i>
 </a>
 
-<script src="language.js"></script>
 <script>
   const nav = document.querySelector("#nav");
   const menuToggle = document.querySelector("#menuToggle");
