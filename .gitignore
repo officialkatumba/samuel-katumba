@@ -1,2 +1,5 @@
 # Local Netlify folder
 .netlify
+
+# Private: sponsor pricing doc, not for the public repo/site
+resources/Sponsor_Pitch_K20000_Per_Session_Samuel_Katumba.pdf
