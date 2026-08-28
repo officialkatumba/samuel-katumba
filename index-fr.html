@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Samuel Katumba - formateur en entrepreneuriat numérique, développeur full-stack, ingénieur IA et éducateur.">
-  <title>Samuel Katumba | Formation en Entrepreneuriat Numérique</title>
+  <meta name="description" content="Samuel Katumba - développeur professionnel d'applications Android et web en Zambie. Vous avez une idée d'application mais aucune compétence technique ? Je construis votre application fonctionnelle en quelques heures à moins d'une semaine - logiciels sur mesure pour entreprises et organisations.">
+  <title>Samuel Katumba | Développeur d'Applications Android &amp; Web</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <style>
-    /* === SAME STYLES AS ENGLISH VERSION === */
+    /* === MÊMES STYLES QUE LA VERSION ANGLAISE === */
     :root {
       --plum: #3f3658;
       --plum-dark: #2a2240;
@@ -31,6 +31,8 @@
       --shadow-sm: 0 4px 20px rgba(49,41,67,0.08);
       --shadow: 0 16px 50px rgba(49,41,67,0.13);
       --shadow-lg: 0 30px 80px rgba(49,41,67,0.18);
+      --gold: #f59e0b;
+      --gold-dark: #d97706;
     }
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -66,6 +68,13 @@
     .nav.scrolled .language-switcher { border-color: var(--line); background: var(--white); }
     .language-option { min-width: 34px; height: 28px; padding: 0 8px; border: 0; border-radius: 5px; color: inherit; background: transparent; font-size: .72rem; font-weight: 800; cursor: pointer; }
     .language-option.active { color: var(--ink); background: var(--peach); }
+    .language-prompt { position: fixed; inset: auto 18px 18px; z-index: 100; display: flex; align-items: center; justify-content: space-between; gap: 20px; width: min(560px, calc(100% - 36px)); margin: auto; padding: 15px 16px 15px 20px; color: var(--white); background: var(--plum); border: 1px solid rgba(229,173,130,.5); border-radius: 10px; box-shadow: 0 18px 48px rgba(30,21,44,.3); }
+    .language-prompt[hidden] { display: none; }
+    .language-prompt strong { display: block; font-family: "Playfair Display", Georgia, serif; font-size: 1.08rem; }
+    .language-prompt span { display: block; margin-top: 2px; color: rgba(255,255,255,.72); font-size: .78rem; }
+    .language-prompt-actions { display: flex; flex-shrink: 0; gap: 7px; }
+    .prompt-language { min-height: 38px; padding: 8px 13px; border: 1px solid rgba(255,255,255,.25); border-radius: 6px; color: var(--white); background: transparent; font-weight: 800; cursor: pointer; }
+    .prompt-language[data-language="fr"] { border-color: var(--peach); color: var(--ink); background: var(--peach); }
     .menu-toggle { width: 40px; height: 40px; display: none; place-items: center; border: 1px solid rgba(255,255,255,.28); border-radius: 6px; color: inherit; background: transparent; cursor: pointer; }
     .nav.scrolled .menu-toggle { border-color: var(--line); }
 
@@ -119,6 +128,42 @@
     .credential-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0; }
     .chip { padding: 5px 12px; border-radius: 99px; background: var(--peach-light); color: var(--plum-dark); font-size: .78rem; font-weight: 700; }
 
+    /* OFFER / SERVICES */
+    .offer-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+    .offer-card { padding: 30px 28px; background: var(--paper); transition: background .2s; }
+    .offer-card:hover { background: var(--white); }
+    .offer-card i { display: block; margin-bottom: 18px; color: var(--peach-dark); font-size: 1.9rem; }
+    .offer-card h3 { margin-bottom: 12px; font-size: 1.2rem; }
+    .offer-card p { font-size: .9rem; color: var(--muted); line-height: 1.7; }
+    .offer-card a { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; color: var(--plum); font-weight: 700; font-size: .88rem; }
+
+    /* HIRE STEPS */
+    .hire-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .hire-step { position: relative; padding: 26px 24px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-sm); }
+    .hire-step-num { position: absolute; top: 16px; right: 20px; font-family: "Playfair Display", serif; font-size: 2.2rem; font-weight: 900; color: rgba(229,173,130,.35); line-height: 1; }
+    .hire-step i { color: var(--peach-dark); font-size: 1.5rem; margin-bottom: 14px; display: block; }
+    .hire-step h3 { font-family: "DM Sans", sans-serif; font-size: 1rem; font-weight: 800; color: var(--ink); margin-bottom: 8px; }
+    .hire-step p { color: var(--muted); font-size: .87rem; line-height: 1.65; }
+
+    /* PROCESS */
+    .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .process-step { padding: 20px 18px; background: var(--white); border: 1px solid var(--line); border-top: 3px solid var(--peach); border-radius: var(--radius); box-shadow: var(--shadow-sm); }
+    .process-step .step-label { display: flex; align-items: center; gap: 8px; font-family: "DM Sans", sans-serif; font-weight: 800; font-size: .95rem; color: var(--ink); margin-bottom: 6px; }
+    .process-step .step-label i { color: var(--peach-dark); width: 18px; text-align: center; }
+    .process-step .step-num { font-size: .72rem; font-weight: 800; color: var(--peach-dark); letter-spacing: .06em; }
+    .process-step p { color: var(--muted); font-size: .82rem; line-height: 1.6; }
+
+    /* BUILD + TRAIN + MAINTAIN */
+    .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+    .pillar { padding: 30px 28px; background: var(--paper); transition: background .2s; }
+    .pillar:hover { background: var(--white); }
+    .pillar > i { display: block; margin-bottom: 16px; color: var(--peach-dark); font-size: 1.8rem; }
+    .pillar h3 { margin-bottom: 12px; font-size: 1.25rem; }
+    .pillar p { font-size: .9rem; color: var(--muted); line-height: 1.7; margin-bottom: 12px; }
+    .pillar ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+    .pillar li { display: flex; gap: 9px; align-items: flex-start; color: var(--muted); font-size: .87rem; line-height: 1.55; }
+    .pillar li i { margin: 4px 0 0; color: var(--peach-dark); font-size: .8rem; width: 15px; }
+
     /* PORTFOLIO — COMPACT */
     .portfolio-section { padding: 24px 0 100px; background: var(--paper); }
     .portfolio-section .section-heading { max-width: 820px; margin: 0 auto 40px; text-align: center; }
@@ -132,7 +177,15 @@
     .tag { padding: 3px 9px; border-radius: 99px; color: var(--pc); background: color-mix(in srgb, var(--pc) 10%, #fff); font-size: .72rem; font-weight: 800; border: 1px solid color-mix(in srgb, var(--pc) 20%, transparent); }
     .project-link { display: inline-flex; align-items: center; gap: 6px; margin-top: auto; color: var(--pc); font-size: .82rem; font-weight: 800; }
 
-    /* WHAT YOU BUILD */
+    /* SKILLS */
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .skill-group { padding: 24px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-sm); }
+    .skill-group h3 { display: flex; align-items: center; gap: 10px; font-family: "DM Sans", sans-serif; font-size: 1rem; font-weight: 800; color: var(--ink); margin-bottom: 14px; }
+    .skill-group h3 i { color: var(--peach-dark); width: 20px; text-align: center; }
+    .skill-group .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .skill-group .tag { color: var(--plum); background: var(--peach-light); border: 0; }
+
+    /* WHAT YOU BUILD (bootcamp strip) */
     .featured { padding: 56px 0; background: var(--plum-dark); color: var(--white); }
     .featured-inner { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; }
     .featured h2 { color: var(--white); font-size: clamp(1.6rem,3.2vw,2.6rem); flex-shrink: 0; }
@@ -140,7 +193,74 @@
     .logo-item { flex: 1; min-height: 80px; display: grid; place-items: center; border: 1px solid rgba(229,173,130,.18); color: var(--peach); font-family: "DM Sans", sans-serif; font-size: clamp(.8rem,1.4vw,1rem); font-weight: 700; text-align: center; padding: 12px 8px; }
     .logo-item:not(:last-child) { border-right: none; }
 
-    /* SPONSOR */
+    /* COACHING (course card) */
+    .course { display: grid; grid-template-columns: minmax(0,.95fr) minmax(280px,.7fr); gap: clamp(32px,6vw,72px); align-items: center; }
+    .course h2 { max-width: 740px; }
+    .course-card { padding: 32px; background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); border-left: 4px solid var(--peach); }
+    .course-meta { display: grid; gap: 16px; margin: 20px 0 0; padding: 0; list-style: none; }
+    .course-meta li { display: flex; gap: 13px; align-items: flex-start; color: var(--muted); font-weight: 600; font-size: .93rem; }
+    .course-meta i { width: 18px; margin-top: 4px; color: var(--peach-dark); }
+
+    /* TESTIMONIALS — COMPACT */
+    .testimonials-section { padding: 72px 0; background: var(--plum); color: var(--white); }
+    .testimonial-header { display: grid; grid-template-columns: minmax(240px,.5fr) minmax(0,1fr); gap: clamp(32px,6vw,80px); align-items: start; margin-bottom: 36px; }
+    .testimonial-header h2 { color: var(--white); font-size: clamp(1.8rem,3.5vw,3rem); }
+    .quotes-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.1); border-radius: var(--radius); overflow: hidden; }
+    .quote-card { padding: 26px 24px; background: rgba(255,255,255,.05); transition: background .2s; }
+    .quote-card:hover { background: rgba(255,255,255,.09); }
+    .quote-stars { color: var(--peach); font-size: .85rem; margin-bottom: 12px; letter-spacing: 2px; }
+    .quote-card p { color: rgba(255,255,255,.82); font-size: .93rem; line-height: 1.7; }
+    .quote-person { margin-top: 16px; display: flex; align-items: center; gap: 10px; }
+    .quote-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--peach); color: var(--plum-dark); display: grid; place-items: center; font-weight: 800; font-size: .85rem; flex-shrink: 0; }
+    .quote-name { font-weight: 700; color: var(--white); font-size: .9rem; line-height: 1.2; }
+    .quote-role { font-size: .78rem; color: rgba(255,255,255,.5); }
+
+    /* EVENTS - GRID CARDS */
+    .events-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 10px; }
+    .event-card { display: flex; flex-direction: column; background: var(--white); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease; border: 1px solid rgba(49, 41, 67, 0.07); height: 100%; }
+    .event-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+    .event-card-image { position: relative; width: 100%; height: 200px; overflow: hidden; background: var(--plum); }
+    .event-card-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+    .event-card:hover .event-card-image img { transform: scale(1.05); }
+    .event-card-badge { position: absolute; top: 14px; right: 14px; padding: 4px 14px; border-radius: 99px; background: #22c55e; color: var(--white); font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; box-shadow: 0 4px 12px rgba(34, 197, 94, 0.35); }
+    .event-card-body { padding: 22px 24px 26px; display: flex; flex-direction: column; flex: 1; }
+    .event-card-date { display: flex; align-items: baseline; gap: 8px; margin-bottom: 12px; }
+    .event-day { font-family: "Playfair Display", Georgia, serif; font-size: 1.8rem; font-weight: 900; color: var(--plum); line-height: 1; }
+    .event-month { color: var(--muted); font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+    .event-card-body h3 { font-family: "DM Sans", Arial, sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--ink); margin-bottom: 8px; line-height: 1.3; }
+    .event-card-body p { color: var(--muted); font-size: 0.92rem; line-height: 1.7; margin-bottom: 16px; flex: 1; }
+    .event-card-meta { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 18px; padding-top: 14px; border-top: 1px solid var(--line); }
+    .event-card-meta span { display: flex; align-items: center; gap: 6px; color: var(--muted); font-size: 0.82rem; font-weight: 500; }
+    .event-card-meta i { color: var(--peach-dark); width: 16px; }
+    .event-card-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 20px; border-radius: var(--radius-sm); background: var(--peach); color: var(--ink); font-weight: 700; font-size: 0.88rem; transition: background 0.2s ease, transform 0.2s ease, gap 0.2s ease; text-align: center; border: none; cursor: pointer; text-decoration: none; }
+    .event-card-btn:hover { background: var(--peach-dark); transform: translateY(-2px); gap: 12px; }
+
+    /* FOCUS BANNER */
+    .focus { position: relative; min-height: 460px; display: grid; align-items: center; color: var(--white); background: linear-gradient(100deg, rgba(42,34,64,.94), rgba(63,54,88,.65)), url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1800&q=80") center / cover; }
+    .focus h2 { max-width: 760px; color: var(--white); font-size: clamp(2rem,4vw,3.5rem); }
+    .focus .lead { max-width: 580px; margin: 20px 0 26px; color: rgba(255,255,255,.8); }
+
+    /* ===== CUSTOM SOFTWARE FOR COMPANIES ===== */
+    .coaching-collab { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); color: var(--white); padding: 100px 0; position: relative; overflow: hidden; }
+    .coaching-collab::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 10% 30%, rgba(245, 158, 11, 0.15) 0%, transparent 50%), radial-gradient(ellipse at 90% 70%, rgba(229, 173, 130, 0.12) 0%, transparent 50%), radial-gradient(ellipse at 50% 50%, rgba(37, 211, 102, 0.05) 0%, transparent 70%); pointer-events: none; }
+    .coaching-collab .container { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .coaching-content h2 { color: var(--white); font-size: clamp(2rem, 4vw, 3.5rem); margin-bottom: 24px; }
+    .coaching-content h2 span { color: var(--gold); }
+    .coaching-content .lead { color: rgba(255, 255, 255, 0.85); font-size: 1.1rem; line-height: 1.9; margin-bottom: 16px; }
+    .coaching-content .highlight-gold { color: var(--gold); font-weight: 700; }
+    .coaching-features { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 28px 0 32px; }
+    .coaching-feature { display: flex; align-items: center; gap: 12px; color: rgba(255, 255, 255, 0.9); font-size: 0.95rem; }
+    .coaching-feature i { color: var(--gold); font-size: 1.1rem; width: 20px; }
+    .coaching-cta { display: inline-flex; align-items: center; gap: 12px; padding: 16px 40px; background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: var(--ink); border: none; border-radius: 8px; font-weight: 700; font-size: 1.05rem; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; box-shadow: 0 8px 30px rgba(245, 158, 11, 0.35); text-decoration: none; }
+    .coaching-cta:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(245, 158, 11, 0.5); }
+    .coaching-image { display: flex; justify-content: center; align-items: center; }
+    .coaching-image-mockup { width: 100%; max-width: 480px; border-radius: var(--radius-lg); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5); overflow: hidden; transition: transform 0.4s ease, box-shadow 0.4s ease; border: 2px solid rgba(245, 158, 11, 0.2); }
+    .coaching-image-mockup:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6); border-color: rgba(245, 158, 11, 0.4); }
+    .coaching-image-mockup img { width: 100%; height: auto; display: block; }
+    .coaching-price-tag { display: inline-block; margin-top: 12px; padding: 6px 18px; border-radius: 99px; background: rgba(245, 158, 11, 0.2); border: 1px solid rgba(245, 158, 11, 0.3); color: var(--gold); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.04em; }
+    .coaching-price-tag strong { font-size: 1.2rem; }
+
+    /* PARTNERS (sponsor) */
     .sponsor-section { background: linear-gradient(140deg,#131126 0%,#1e1840 50%,#0f2d4a 100%); color: var(--white); padding: 100px 0; position: relative; overflow: hidden; }
     .sponsor-section::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 60%, rgba(229,173,130,.13) 0%,transparent 58%), radial-gradient(ellipse at 80% 40%, rgba(37,211,102,.07) 0%,transparent 58%); pointer-events: none; }
     .sponsor-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
@@ -157,59 +277,10 @@
     .card-mockup:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 42px 100px rgba(0,0,0,.6); }
     .card-mockup img { width: 100%; height: auto; display: block; }
 
-    /* COACHING */
-    .course { display: grid; grid-template-columns: minmax(0,.95fr) minmax(280px,.7fr); gap: clamp(32px,6vw,72px); align-items: center; }
-    .course h2 { max-width: 740px; }
-    .course-card { padding: 32px; background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); border-left: 4px solid var(--peach); }
-    .course-meta { display: grid; gap: 16px; margin: 20px 0 0; padding: 0; list-style: none; }
-    .course-meta li { display: flex; gap: 13px; align-items: flex-start; color: var(--muted); font-weight: 600; font-size: .93rem; }
-    .course-meta i { width: 18px; margin-top: 4px; color: var(--peach-dark); }
-
-    /* OFFER */
-    .offer-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
-    .offer-card { padding: 30px 28px; background: var(--paper); transition: background .2s; }
-    .offer-card:hover { background: var(--white); }
-    .offer-card i { display: block; margin-bottom: 18px; color: var(--peach-dark); font-size: 1.9rem; }
-    .offer-card h3 { margin-bottom: 12px; font-size: 1.2rem; }
-    .offer-card p { font-size: .9rem; color: var(--muted); line-height: 1.7; }
-    .offer-card a { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; color: var(--plum); font-weight: 700; font-size: .88rem; }
-
-    /* TESTIMONIALS — COMPACT */
-    .testimonials-section { padding: 72px 0; background: var(--plum); color: var(--white); }
-    .testimonial-header { display: grid; grid-template-columns: minmax(240px,.5fr) minmax(0,1fr); gap: clamp(32px,6vw,80px); align-items: start; margin-bottom: 36px; }
-    .testimonial-header h2 { color: var(--white); font-size: clamp(1.8rem,3.5vw,3rem); }
-    .quotes-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.1); border-radius: var(--radius); overflow: hidden; }
-    .quote-card { padding: 26px 24px; background: rgba(255,255,255,.05); transition: background .2s; }
-    .quote-card:hover { background: rgba(255,255,255,.09); }
-    .quote-stars { color: var(--peach); font-size: .85rem; margin-bottom: 12px; letter-spacing: 2px; }
-    .quote-card p { color: rgba(255,255,255,.82); font-size: .93rem; line-height: 1.7; }
-    .quote-person { margin-top: 16px; display: flex; align-items: center; gap: 10px; }
-    .quote-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--peach); color: var(--plum-dark); display: grid; place-items: center; font-weight: 800; font-size: .85rem; flex-shrink: 0; }
-    .quote-name { font-weight: 700; color: var(--white); font-size: .9rem; line-height: 1.2; }
-    .quote-role { font-size: .78rem; color: rgba(255,255,255,.5); }
-
-    /* EVENTS */
-    .events { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
-    .event-row { display: grid; grid-template-columns: 120px minmax(0,1fr) auto; gap: 24px; align-items: center; padding: 22px 28px; background: var(--paper); transition: background .2s; }
-    .event-row:hover { background: var(--white); }
-    .event-date { color: var(--plum); font-family: "Playfair Display", serif; font-size: 1.6rem; font-weight: 700; line-height: 1.1; }
-    .event-date span { display: block; font-size: .72rem; font-family: "DM Sans",sans-serif; font-weight: 600; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; margin-top: 2px; }
-    .event-row h3 { font-size: 1rem; font-weight: 700; font-family: "DM Sans",sans-serif; color: var(--ink); margin-bottom: 3px; }
-    .event-row p { color: var(--muted); font-size: .85rem; font-weight: 500; }
-    .event-badge { padding: 4px 12px; background: #e6f9ee; color: #16a34a; border-radius: 99px; font-size: .72rem; font-weight: 800; white-space: nowrap; }
-    .events-action { display: grid; justify-items: center; gap: 16px; max-width: 680px; margin: 28px auto 0; text-align: center; }
-
-    /* FOCUS BANNER */
-    .focus { position: relative; min-height: 460px; display: grid; align-items: center; color: var(--white); background: linear-gradient(100deg, rgba(42,34,64,.94), rgba(63,54,88,.65)), url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1800&q=80") center / cover; }
-    .focus h2 { max-width: 760px; color: var(--white); font-size: clamp(2rem,4vw,3.5rem); }
-    .focus .lead { max-width: 580px; margin: 20px 0 26px; color: rgba(255,255,255,.8); }
-
     /* RESOURCES */
     .resources-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
     .resource { display: flex; flex-direction: column; background: var(--white); box-shadow: var(--shadow-sm); border-radius: var(--radius-lg); overflow: hidden; transition: transform .28s, box-shadow .28s; border: 1px solid rgba(49,41,67,.07); }
     .resource:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
-
-    /* VIDEO THUMBNAIL */
     .resource-thumb { position: relative; width: 100%; height: 190px; overflow: hidden; background: #000; cursor: pointer; display: block; }
     .resource-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s, opacity .4s; }
     .resource-thumb:hover img { transform: scale(1.04); opacity: .85; }
@@ -217,7 +288,6 @@
     .play-circle { width: 54px; height: 54px; border-radius: 50%; background: rgba(255,255,255,.92); display: grid; place-items: center; color: #ef4444; font-size: 1.4rem; box-shadow: 0 6px 24px rgba(0,0,0,.35); transition: transform .25s, box-shadow .25s; }
     .resource-thumb:hover .play-circle { transform: scale(1.1); box-shadow: 0 10px 32px rgba(0,0,0,.45); }
     .yt-label { position: absolute; bottom: 8px; right: 10px; background: rgba(0,0,0,.78); color: #fff; font-size: .68rem; font-weight: 700; padding: 2px 7px; border-radius: 4px; letter-spacing: .03em; }
-
     .resource-img { width: 100%; height: 190px; object-fit: cover; border-bottom: 3px solid var(--peach); }
     .resource-body { padding: 22px 24px; display: flex; flex-direction: column; flex: 1; }
     .resource-body h3 { margin-bottom: 9px; font-size: 1.05rem; font-weight: 800; color: var(--ink); font-family: "DM Sans",sans-serif; }
@@ -226,11 +296,6 @@
     .resource-tag { display: inline-block; padding: 3px 10px; border-radius: 50px; background: var(--mist); color: var(--muted); font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; }
     .resource-link { display: inline-flex; align-items: center; gap: 8px; color: var(--plum); font-weight: 700; font-size: .88rem; transition: color .2s, gap .2s; }
     .resource-link:hover { color: var(--peach-dark); gap: 12px; }
-
-    /* SPONSOR PITCH DOWNLOAD */
-    .sponsor-pitch-download { margin-top: 52px; padding: 40px; background: linear-gradient(135deg, var(--plum), var(--plum-dark)); border-radius: var(--radius-lg); color: var(--white); text-align: center; }
-    .sponsor-pitch-download h3 { color: var(--white); margin-bottom: 12px; font-size: 1.5rem; }
-    .sponsor-pitch-download p { color: rgba(255,255,255,.82); max-width: 660px; margin: 0 auto 22px; font-size: 1rem; }
 
     /* CONTACT */
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(36px,6vw,80px); align-items: start; }
@@ -265,27 +330,36 @@
       .portfolio-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
       .testimonial-header { grid-template-columns: 1fr; }
       .quotes-row { grid-template-columns: 1fr; }
-      .offer-grid, .resources-grid { grid-template-columns: repeat(2,1fr); }
-      .event-row { grid-template-columns: 80px minmax(0,1fr); }
-      .event-row .event-badge { display: none; }
+      .offer-grid, .resources-grid, .skills-grid { grid-template-columns: repeat(2,1fr); }
+      .hire-steps, .process-grid { grid-template-columns: repeat(2, 1fr); }
+      .pillars-grid { grid-template-columns: 1fr; }
       .sponsor-grid { grid-template-columns: 1fr; gap: 40px; }
       .hero-stat-row { gap: 24px; }
+      .events-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+      .coaching-collab .container { grid-template-columns: 1fr; gap: 40px; }
+      .coaching-content { order: 2; }
+      .coaching-image { order: 1; }
+      .coaching-features { grid-template-columns: 1fr; }
+      .coaching-image-mockup { max-width: 360px; }
     }
     @media (max-width: 640px) {
       .section { padding: 68px 0; }
       .hero { min-height: 94vh; padding-top: 100px; }
       .hero::after { display: none; }
       .hero-stat-row { flex-wrap: wrap; gap: 18px; }
-      .portfolio-grid, .offer-grid, .resources-grid { grid-template-columns: 1fr; }
-      .event-row { grid-template-columns: 1fr; }
-      .event-date { font-size: 1.2rem; }
+      .portfolio-grid, .offer-grid, .resources-grid, .events-grid, .skills-grid { grid-template-columns: 1fr; gap: 20px; }
+      .hire-steps, .process-grid { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; }
-      .sponsor-section { padding: 68px 0; }
+      .sponsor-section, .coaching-collab { padding: 68px 0; }
       .featured-inner { flex-direction: column; gap: 24px; }
       .logo-row { flex-direction: column; }
       .testimonials-section { padding: 56px 0; }
+      .event-card-image { height: 170px; }
+      .event-card-body { padding: 18px 20px 22px; }
+      .event-day { font-size: 1.4rem; }
+      .coaching-image-mockup { max-width: 280px; }
+      .coaching-features { grid-template-columns: 1fr; }
     }
-
     @media (max-width: 560px) {
       .language-prompt { align-items: stretch; flex-direction: column; gap: 12px; }
       .language-prompt-actions { width: 100%; }
@@ -304,12 +378,13 @@
     </a>
     <nav class="nav-links" id="navLinks" aria-label="Navigation principale">
       <a href="#about">À propos</a>
-      <a href="#coaching">Formation</a>
-      <a href="#events">Événements</a>
-      <a href="#sponsor">Partenariat</a>
+      <a href="#services">Services</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#process">Processus</a>
+      <a href="#bootcamp">Bootcamp</a>
+      <a href="#partners">Partenariats</a>
       <a href="#resources">Ressources</a>
-      <a href="#testimonials">Témoignages</a>
-      <a href="#contact" class="nav-cta">Rejoindre gratuit →</a>
+      <a href="#contact" class="nav-cta">Engagez-moi →</a>
     </nav>
     <div class="nav-tools">
       <div class="language-switcher" role="group" aria-label="Choisir la langue">
@@ -322,6 +397,13 @@
     </div>
   </div>
 </header>
+<aside class="language-prompt" id="languagePrompt" aria-live="polite" hidden>
+  <div><strong>Choisissez votre langue</strong><span>Choose the language that suits you.</span></div>
+  <div class="language-prompt-actions">
+    <button class="prompt-language" type="button" data-language="en">English</button>
+    <button class="prompt-language" type="button" data-language="fr">Français</button>
+  </div>
+</aside>
 
 <main>
 
@@ -331,18 +413,18 @@
     <div class="hero-content reveal">
       <div class="hero-badge">
         <span class="hero-badge-dot"><i class="fa-solid fa-bolt" style="font-size:.65rem"></i></span>
-        La révolution de l'IA est arrivée
+        Développeur de logiciels professionnel
       </div>
-      <h1>Créez des sites web et des applis en <em>UNE JOURNÉE</em> — 100 % gratuit</h1>
-      <p class="lead">Ce qui prenait autrefois des années d'études universitaires ne prend plus que 10 heures avec l'IA. Aucune expérience requise. Rejoignez les milliers de Zambiens qui construisent déjà leur avenir numérique.</p>
+      <h1>Je conçois &amp; développe des applications <em>Android &amp; Web</em></h1>
+      <p class="lead">Vous avez une idée d'application mais aucune compétence technique ? C'est tout ce qu'il vous faut. Engagez-moi pour concevoir et développer votre application Android ou web en quelques heures à moins d'une semaine — et j'aiderai votre équipe à l'utiliser, la gérer et la maintenir.</p>
       <div class="hero-actions">
-        <a class="btn" href="#contact">Rejoindre le bootcamp gratuit <i class="fa-solid fa-angle-right"></i></a>
-        <a class="btn outline" href="#events">Voir les événements <i class="fa-solid fa-calendar-days"></i></a>
+        <a class="btn" href="#contact">Engagez-moi <i class="fa-solid fa-angle-right"></i></a>
+        <a class="btn outline" href="#portfolio">Voir mes réalisations <i class="fa-solid fa-briefcase"></i></a>
       </div>
       <div class="hero-stat-row">
-        <div class="hero-stat"><strong>1 000+</strong><span>Étudiants par session</span></div>
-        <div class="hero-stat"><strong>10 h</strong><span>De zéro au développeur</span></div>
-        <div class="hero-stat"><strong>100 %</strong><span>Formation gratuite</span></div>
+        <div class="hero-stat"><strong>10+</strong><span>Systèmes livrés</span></div>
+        <div class="hero-stat"><strong>Heures–5 jours</strong><span>De l'idée à l'app</span></div>
+        <div class="hero-stat"><strong>100 %</strong><span>Sur mesure</span></div>
       </div>
     </div>
   </div>
@@ -357,17 +439,250 @@
     <div class="portrait reveal" role="img" aria-label="Samuel Katumba"></div>
     <div class="about-copy reveal">
       <span class="eyebrow">À propos de Samuel</span>
-      <h2>Des conseils pratiques pour des résultats visibles.</h2>
+      <h2>Un développeur professionnel qui construit des logiciels pratiques pour de vraies organisations.</h2>
       <div class="credential-chips">
         <span class="chip">BSc Informatique — UoPeople (USA)</span>
         <span class="chip">BSc Gestion Touristique — Amity (Inde)</span>
         <span class="chip">MCA en IA — Amity (en cours)</span>
         <span class="chip">PG Dip Enseignement — Copperstone</span>
       </div>
-      <p class="lead">Samuel Katumba est un entrepreneur zambien, chargé de cours universitaire et formateur en compétences numériques basé à Kitwe. Il a construit de nombreux systèmes de niveau commercial — des portails de gestion universitaire aux plateformes électorales alimentées par l'IA — et a pour mission de former gratuitement 10 000 Zambiens.</p>
-      <p style="margin-top:14px;color:var(--muted);font-size:.95rem;line-height:1.8;">Autrefois, créer un site web demandait des années de formation. Ce monde n'existe plus. Aujourd'hui, avec l'IA, n'importe qui peut créer et lancer un site professionnel en UNE JOURNÉE. Samuel croit que la révolution de l'IA est le grand égalisateur — et il le prouve, bootcamp après bootcamp.</p>
+      <p class="lead">Samuel Katumba est un développeur de logiciels professionnel et consultant en technologies basé à Kitwe, en Zambie. Il se spécialise dans la conception et le développement d'applications Android et web sur mesure — des portails de gestion universitaire et plateformes alimentées par l'IA aux systèmes de paie, de messagerie et de gestion utilisés chaque jour en production.</p>
+      <p style="margin-top:14px;color:var(--muted);font-size:.95rem;line-height:1.8;">L'approche bootcamp de Samuel signifie que vous n'avez pas besoin d'être développeur pour lancer un produit numérique. Vous apportez l'idée — il apporte les compétences — et ensemble, vous passez de zéro à une application fonctionnelle en quelques heures à moins d'une semaine.</p>
       <p class="signature">Samuel Katumba</p>
-      <a class="btn" href="#coaching" style="margin-top:20px;">En savoir plus <i class="fa-solid fa-angle-right"></i></a>
+      <a class="btn" href="#contact" style="margin-top:20px;">Lancer un projet <i class="fa-solid fa-angle-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT I CAN BUILD -->
+<section class="section mist" id="services">
+  <div class="container">
+    <div class="section-heading reveal">
+      <span class="eyebrow">Ce que je peux construire</span>
+      <h2>Des logiciels sur mesure pour chaque type d'organisation</h2>
+      <p style="color:var(--muted);margin-top:12px;font-size:1.05rem;">Vous apportez l'idée, le problème d'entreprise ou le processus. Je conçois et développe la solution numérique autour de celui-ci.</p>
+    </div>
+    <div class="offer-grid">
+      <article class="offer-card reveal">
+        <i class="fa-solid fa-mobile-screen"></i>
+        <h3>Applications Android &amp; iOS</h3>
+        <p>Des applications Android et iOS natives construites avec des outils modernes et conçues autour de vos utilisateurs — du premier écran à la publication sur le Play Store et l'App Store.</p>
+        <a href="#contact">Lancer un projet <i class="fa-solid fa-angle-right"></i></a>
+      </article>
+      <article class="offer-card reveal">
+        <i class="fa-solid fa-globe"></i>
+        <h3>Applications Web</h3>
+        <p>Des applications web rapides, sécurisées et réactives — tableaux de bord, portails, e-commerce et services en ligne qui fonctionnent partout.</p>
+        <a href="#contact">Lancer un projet <i class="fa-solid fa-angle-right"></i></a>
+      </article>
+      <article class="offer-card reveal">
+        <i class="fa-solid fa-building"></i>
+        <h3>Systèmes de gestion d'entreprise</h3>
+        <p>Dossiers étudiants, paie, inventaire, réservations, RH et opérations — des systèmes construits autour de la façon dont votre organisation fonctionne réellement.</p>
+        <a href="#contact">Lancer un projet <i class="fa-solid fa-angle-right"></i></a>
+      </article>
+      <article class="offer-card reveal">
+        <i class="fa-solid fa-puzzle-piece"></i>
+        <h3>Plateformes sur mesure</h3>
+        <p>Des plateformes taillées pour votre flux de travail unique — des portails universitaires aux places de marché de services et outils internes.</p>
+        <a href="#contact">Lancer un projet <i class="fa-solid fa-angle-right"></i></a>
+      </article>
+      <article class="offer-card reveal">
+        <i class="fa-solid fa-database"></i>
+        <h3>Applications basées sur des bases de données</h3>
+        <p>Des données structurées, des rapports fiables et un stockage sécurisé qui évoluent avec votre entreprise — pas une feuille de calcul, un vrai système.</p>
+        <a href="#contact">Lancer un projet <i class="fa-solid fa-angle-right"></i></a>
+      </article>
+      <article class="offer-card reveal">
+        <i class="fa-solid fa-gears"></i>
+        <h3>API &amp; Systèmes backend</h3>
+        <p>Le moteur de vos applications : API, intégrations tierces, traitement des paiements et automatisation des processus.</p>
+        <a href="#contact">Lancer un projet <i class="fa-solid fa-angle-right"></i></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- HIRE ME / START A PROJECT -->
+<section class="section" id="hire">
+  <div class="container">
+    <div class="section-heading center reveal">
+      <span class="eyebrow">Engagez-moi / Lancez un projet</span>
+      <h2>De l'idée au lancement — un processus simple et éprouvé</h2>
+      <p style="color:var(--muted);margin-top:12px;font-size:1.05rem;">Que vous ayez une idée vague, un problème d'entreprise ou un processus existant qui a besoin d'une solution numérique, voici comment nous travaillons ensemble.</p>
+    </div>
+    <div class="hire-steps">
+      <article class="hire-step reveal">
+        <span class="hire-step-num">01</span>
+        <i class="fa-solid fa-comments"></i>
+        <h3>Parlez-moi de votre idée</h3>
+        <p>Partagez votre idée, votre problème d'entreprise ou votre processus avec vos propres mots — aucune compétence technique requise. J'écoute, je pose les bonnes questions et je comprends vos besoins.</p>
+      </article>
+      <article class="hire-step reveal">
+        <span class="hire-step-num">02</span>
+        <i class="fa-solid fa-lightbulb"></i>
+        <h3>Nous analysons &amp; concevons</h3>
+        <p>J'analyse le problème, je planifie la solution et je conçois l'interface (UI/UX) avant la première ligne de code.</p>
+      </article>
+      <article class="hire-step reveal">
+        <span class="hire-step-num">03</span>
+        <i class="fa-solid fa-hammer"></i>
+        <h3>Je développe &amp; je teste</h3>
+        <p>Votre application Android ou web est développée, testée et affinée jusqu'à être prête pour la production.</p>
+      </article>
+      <article class="hire-step reveal">
+        <span class="hire-step-num">04</span>
+        <i class="fa-solid fa-rocket"></i>
+        <h3>Déploiement, formation &amp; support</h3>
+        <p>Je déploie votre système, je forme votre équipe, je remets la documentation — et je reste disponible pour la maintenance et le support.</p>
+      </article>
+    </div>
+    <div style="text-align:center;margin-top:36px;" class="reveal">
+      <a class="btn" href="#contact">Lancer un projet <i class="fa-solid fa-angle-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- CUSTOM SOFTWARE FOR COMPANIES -->
+<section class="coaching-collab" id="companies">
+  <div class="container">
+    <div class="coaching-content reveal">
+      <span class="eyebrow" style="color: var(--gold); border-color: rgba(245, 158, 11, 0.4); background: rgba(245, 158, 11, 0.12);">Logiciel sur mesure pour votre organisation</span>
+      <h2>Un projet logiciel <span>difficile &amp; exigeant</span> ?</h2>
+      <p class="lead">
+        Samuel Katumba est prêt à répondre à l'appel et à rejoindre votre projet professionnel, en apportant <strong class="highlight-gold">une expérience étendue</strong> et <strong class="highlight-gold">des connaissances pratiques</strong> des dernières technologies.
+      </p>
+      <p class="lead" style="font-size: 1rem; color: rgba(255,255,255,0.7);">
+        De l'analyse des exigences et de l'architecture au déploiement, aux tests, à la documentation et à la formation du personnel — Samuel livre des solutions de niveau entreprise qui résolvent de vrais problèmes d'entreprise.
+      </p>
+      <div class="coaching-features">
+        <div class="coaching-feature"><i class="fa-solid fa-check-circle"></i><span>Développement full-stack</span></div>
+        <div class="coaching-feature"><i class="fa-solid fa-check-circle"></i><span>IA &amp; Machine Learning</span></div>
+        <div class="coaching-feature"><i class="fa-solid fa-check-circle"></i><span>Architecture système &amp; bases de données</span></div>
+        <div class="coaching-feature"><i class="fa-solid fa-check-circle"></i><span>Solutions d'entreprise</span></div>
+        <div class="coaching-feature"><i class="fa-solid fa-check-circle"></i><span>Déploiement cloud</span></div>
+        <div class="coaching-feature"><i class="fa-solid fa-check-circle"></i><span>Formation &amp; mentorat du personnel</span></div>
+      </div>
+      <div>
+        <span class="coaching-price-tag">💡 <strong>Prix abordable</strong> et sur mesure</span>
+      </div>
+      <div style="margin-top: 20px;">
+        <a href="#contact" class="coaching-cta">
+          <i class="fa-solid fa-handshake"></i>
+          Construisons ensemble
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+    <div class="coaching-image reveal">
+      <div class="coaching-image-mockup">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop&q=80" alt="Collaboration en développement logiciel" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MY DEVELOPMENT PROCESS -->
+<section class="section" id="process">
+  <div class="container">
+    <div class="section-heading reveal">
+      <span class="eyebrow">Mon processus de développement</span>
+      <h2>Huit étapes, du problème à la production</h2>
+      <p style="color:var(--muted);margin-top:12px;font-size:1.05rem;">Un cycle de développement complet — pour que vous sachiez toujours ce qui se passe, ce qui vient ensuite et ce que vous recevrez.</p>
+    </div>
+    <div class="process-grid">
+      <div class="process-step reveal">
+        <span class="step-num">ÉTAPE 01</span>
+        <div class="step-label"><i class="fa-solid fa-magnifying-glass"></i>Découvrir</div>
+        <p>J'apprends à connaître votre organisation, vos utilisateurs et vos objectifs avant toute planification.</p>
+      </div>
+      <div class="process-step reveal">
+        <span class="step-num">ÉTAPE 02</span>
+        <div class="step-label"><i class="fa-solid fa-chart-line"></i>Analyser</div>
+        <p>Je décompose le problème d'entreprise et je définis des exigences claires et documentées.</p>
+      </div>
+      <div class="process-step reveal">
+        <span class="step-num">ÉTAPE 03</span>
+        <div class="step-label"><i class="fa-solid fa-pen-ruler"></i>Concevoir</div>
+        <p>UI/UX, architecture système et conception de la base de données — validées avec vous avant de coder.</p>
+      </div>
+      <div class="process-step reveal">
+        <span class="step-num">ÉTAPE 04</span>
+        <div class="step-label"><i class="fa-solid fa-code"></i>Développer</div>
+        <p>Le code Android, web et backend est construit par étapes claires, avec des mises à jour régulières.</p>
+      </div>
+      <div class="process-step reveal">
+        <span class="step-num">ÉTAPE 05</span>
+        <div class="step-label"><i class="fa-solid fa-flask"></i>Tester</div>
+        <p>Contrôles qualité, corrections de bugs et tests utilisateurs avant que quoi que ce soit n'atteigne votre équipe.</p>
+      </div>
+      <div class="process-step reveal">
+        <span class="step-num">ÉTAPE 06</span>
+        <div class="step-label"><i class="fa-solid fa-rocket"></i>Déployer</div>
+        <p>Lancement sur vos serveurs ou dans le cloud — en ligne, fiable et accompagné de documentation.</p>
+      </div>
+      <div class="process-step reveal">
+        <span class="step-num">ÉTAPE 07</span>
+        <div class="step-label"><i class="fa-solid fa-chalkboard-user"></i>Former</div>
+        <p>Votre équipe apprend à utiliser, gérer et maintenir le système — de façon pratique et concrète.</p>
+      </div>
+      <div class="process-step reveal">
+        <span class="step-num">ÉTAPE 08</span>
+        <div class="step-label"><i class="fa-solid fa-gears"></i>Maintenir</div>
+        <p>Mises à jour continues, sécurité, surveillance et support pour garder votre système en bonne santé.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUILD + TRAIN + MAINTAIN -->
+<section class="section mist" id="support">
+  <div class="container">
+    <div class="section-heading center reveal">
+      <span class="eyebrow">Construire + Former + Maintenir</span>
+      <h2>Je ne construis pas seulement votre logiciel. J'aide votre équipe à le comprendre, le gérer et le maintenir.</h2>
+      <p style="color:var(--muted);margin-top:12px;font-size:1.05rem;">Ce qui rend mon service différent : après le lancement, vous n'êtes pas laissé à vous-même.</p>
+    </div>
+    <div class="pillars-grid">
+      <article class="pillar reveal">
+        <i class="fa-solid fa-hammer"></i>
+        <h3>Construire</h3>
+        <p>Le cycle de développement complet, livré comme un seul ensemble responsable :</p>
+        <ul>
+          <li><i class="fa-solid fa-check"></i>Exigences &amp; analyse</li>
+          <li><i class="fa-solid fa-check"></i>Conception de la solution &amp; UI/UX</li>
+          <li><i class="fa-solid fa-check"></i>Développement Android &amp; web</li>
+          <li><i class="fa-solid fa-check"></i>Backend, API &amp; bases de données</li>
+          <li><i class="fa-solid fa-check"></i>Tests, déploiement &amp; documentation</li>
+        </ul>
+      </article>
+      <article class="pillar reveal">
+        <i class="fa-solid fa-chalkboard-user"></i>
+        <h3>Former</h3>
+        <p>Votre personnel désigné apprend à faire fonctionner le système en toute confiance :</p>
+        <ul>
+          <li><i class="fa-solid fa-check"></i>Utiliser le système correctement</li>
+          <li><i class="fa-solid fa-check"></i>Gérer les utilisateurs &amp; les données</li>
+          <li><i class="fa-solid fa-check"></i>Tâches administratives courantes</li>
+          <li><i class="fa-solid fa-check"></i>Dépannage de base</li>
+          <li><i class="fa-solid fa-check"></i>Travailler avec la documentation &amp; les futurs développeurs</li>
+        </ul>
+      </article>
+      <article class="pillar reveal">
+        <i class="fa-solid fa-screwdriver-wrench"></i>
+        <h3>Maintenir</h3>
+        <p>Une relation à long terme, pas une transaction ponctuelle :</p>
+        <ul>
+          <li><i class="fa-solid fa-check"></i>Corrections de bugs &amp; mises à jour de sécurité</li>
+          <li><i class="fa-solid fa-check"></i>Améliorations des performances</li>
+          <li><i class="fa-solid fa-check"></i>Nouvelles fonctionnalités</li>
+          <li><i class="fa-solid fa-check"></i>Surveillance &amp; maintenance des bases de données</li>
+          <li><i class="fa-solid fa-check"></i>Support technique &amp; recyclage du personnel</li>
+        </ul>
+      </article>
+    </div>
+    <div style="text-align:center;margin-top:36px;" class="reveal">
+      <a class="btn" href="#contact">Engagez-moi <i class="fa-solid fa-angle-right"></i></a>
     </div>
   </div>
 </section>
@@ -378,9 +693,45 @@
     <div class="section-heading reveal">
       <span class="eyebrow">Portfolio</span>
       <h2>💼 Des systèmes réels. Un impact réel.</h2>
-      <p style="color:var(--muted);margin-top:12px;font-size:1.05rem;">Voici ce que j'ai construit — et ce que je vous apprendrai à construire.</p>
+      <p style="color:var(--muted);margin-top:12px;font-size:1.05rem;">Des applications Android et des systèmes web que j'ai conçus et développés — utilisés chaque jour en production.</p>
     </div>
     <div class="portfolio-grid">
+      <article class="portfolio-card reveal" style="--pc:#2563EB;">
+        <div class="portfolio-icon">🏠</div>
+        <h3>Katumba Properties</h3>
+        <p>Application Android pour l'annonce, la location et la gestion immobilière — parcourez, publiez et gérez vos biens depuis votre téléphone.</p>
+        <div class="tech-tags">
+          <span class="tag">Kotlin</span><span class="tag">Firebase</span><span class="tag">Android Studio</span>
+        </div>
+        <a href="#contact" class="project-link">Se renseigner <i class="fa-solid fa-arrow-right"></i></a>
+      </article>
+      <article class="portfolio-card reveal" style="--pc:#06B6D4;">
+        <div class="portfolio-icon">🚗</div>
+        <h3>Katumba Rides</h3>
+        <p>Application Android de covoiturage qui connecte conducteurs et passagers — suivi en direct, estimation des tarifs et réservation instantanée.</p>
+        <div class="tech-tags">
+          <span class="tag">Kotlin</span><span class="tag">API Google Maps</span><span class="tag">Firebase</span>
+        </div>
+        <a href="#contact" class="project-link">Se renseigner <i class="fa-solid fa-arrow-right"></i></a>
+      </article>
+      <article class="portfolio-card reveal" style="--pc:#D946EF;">
+        <div class="portfolio-icon">🏷️</div>
+        <h3>Katumba Auction</h3>
+        <p>Application Android de vente aux enchères pour mettre en ligne des articles, enchérir et gagner des offres en temps réel.</p>
+        <div class="tech-tags">
+          <span class="tag">Java</span><span class="tag">Node.js</span><span class="tag">MongoDB</span>
+        </div>
+        <a href="#contact" class="project-link">Se renseigner <i class="fa-solid fa-arrow-right"></i></a>
+      </article>
+      <article class="portfolio-card reveal" style="--pc:#8B5CF6;">
+        <div class="portfolio-icon">🎟️</div>
+        <h3>Katumba Invited</h3>
+        <p>Application Android d'invitations à des événements — créez des invitations, suivez les RSVP et gérez votre liste d'invités au même endroit.</p>
+        <div class="tech-tags">
+          <span class="tag">Kotlin</span><span class="tag">Firebase</span><span class="tag">Jetpack Compose</span>
+        </div>
+        <a href="#contact" class="project-link">Se renseigner <i class="fa-solid fa-arrow-right"></i></a>
+      </article>
       <article class="portfolio-card reveal" style="--pc:#0EA5E9;">
         <div class="portfolio-icon">🏛️</div>
         <h3>Portail de gestion universitaire</h3>
@@ -388,7 +739,7 @@
         <div class="tech-tags">
           <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">PostgreSQL</span>
         </div>
-        <a href="#" class="project-link">Voir le projet <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="#contact" class="project-link">Se renseigner <i class="fa-solid fa-arrow-right"></i></a>
       </article>
       <article class="portfolio-card reveal" style="--pc:#7C3AED;">
         <div class="portfolio-icon">🗳️</div>
@@ -397,7 +748,7 @@
         <div class="tech-tags">
           <span class="tag">Python</span><span class="tag">TensorFlow</span><span class="tag">MongoDB</span>
         </div>
-        <a href="#" class="project-link">Voir le projet <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="#contact" class="project-link">Se renseigner <i class="fa-solid fa-arrow-right"></i></a>
       </article>
       <article class="portfolio-card reveal" style="--pc:#10B981;">
         <div class="portfolio-icon">🛡️</div>
@@ -406,7 +757,7 @@
         <div class="tech-tags">
           <span class="tag">Python</span><span class="tag">React</span><span class="tag">PostgreSQL</span>
         </div>
-        <a href="#" class="project-link">Voir le projet <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="#contact" class="project-link">Se renseigner <i class="fa-solid fa-arrow-right"></i></a>
       </article>
       <article class="portfolio-card reveal" style="--pc:#F59E0B;">
         <div class="portfolio-icon">💼</div>
@@ -415,7 +766,7 @@
         <div class="tech-tags">
           <span class="tag">Node.js</span><span class="tag">React</span><span class="tag">ChatGPT API</span>
         </div>
-        <a href="#" class="project-link">Voir le projet <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="#contact" class="project-link">Se renseigner <i class="fa-solid fa-arrow-right"></i></a>
       </article>
       <article class="portfolio-card reveal" style="--pc:#EF4444;">
         <div class="portfolio-icon">💰</div>
@@ -424,7 +775,7 @@
         <div class="tech-tags">
           <span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">Bootstrap</span>
         </div>
-        <a href="#" class="project-link">Voir le projet <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="#contact" class="project-link">Se renseigner <i class="fa-solid fa-arrow-right"></i></a>
       </article>
       <article class="portfolio-card reveal" style="--pc:#F97316;">
         <div class="portfolio-icon">📦</div>
@@ -433,119 +784,169 @@
         <div class="tech-tags">
           <span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">JavaScript</span>
         </div>
-        <a href="#" class="project-link">Voir le projet <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="#contact" class="project-link">Se renseigner <i class="fa-solid fa-arrow-right"></i></a>
       </article>
     </div>
+    <p style="text-align:center;color:var(--muted);margin-top:32px;font-size:.98rem;" class="reveal">
+      Un défi similaire dans votre organisation ? <a href="#contact" style="color:var(--plum);font-weight:700;">Construisons votre solution <i class="fa-solid fa-arrow-right"></i></a>
+    </p>
   </div>
 </section>
 
-<!-- WHAT YOU BUILD -->
-<section class="featured">
-  <div class="container featured-inner reveal">
-    <h2>Ce que vous construirez en UNE JOURNÉE</h2>
-    <div class="logo-row">
-      <div class="logo-item">✅ Site web complet</div>
-      <div class="logo-item">✅ Intégration de paiement</div>
-      <div class="logo-item">✅ Chat WhatsApp</div>
-      <div class="logo-item">✅ EN LIGNE sur Netlify</div>
-    </div>
-  </div>
-</section>
-
-<!-- SPONSORSHIP -->
-<section class="sponsor-section" id="sponsor">
-  <div class="container">
-    <div class="sponsor-grid">
-      <div class="sponsor-content reveal">
-        <span class="eyebrow">🤝 Devenez partenaire</span>
-        <h2>Offrez des compétences gratuites tout en augmentant la <span>visibilité de votre carte</span></h2>
-        <p class="lead">En devenant partenaire, vous placez vos <strong class="highlight">Cartes de débit</strong> et <strong class="highlight">Cartes de débit virtuelles</strong> directement devant des milliers de nouveaux entrepreneurs numériques.</p>
-        <p class="lead">Chaque étudiant que nous formons a besoin d'un moyen fiable de payer pour les <strong class="highlight">domaines</strong>, l'<strong class="highlight">hébergement</strong>, les <strong class="highlight">thèmes premium</strong> et les <strong class="highlight">outils d'IA</strong>. Nous faisons activement la promotion de votre carte comme solution de paiement de confiance.</p>
-        <div class="sponsor-benefits">
-          <div class="sponsor-benefit"><i class="fa-solid fa-check-circle"></i><span>1 000+ étudiants par session</span></div>
-          <div class="sponsor-benefit"><i class="fa-solid fa-check-circle"></i><span>800+ sites web avec votre carte</span></div>
-          <div class="sponsor-benefit"><i class="fa-solid fa-check-circle"></i><span>200+ inscriptions de commerçants</span></div>
-          <div class="sponsor-benefit"><i class="fa-solid fa-check-circle"></i><span>50 000+ impressions sociales</span></div>
-        </div>
-        <a href="resources/Sponsor_Pitch_K20000_Per_Session_Samuel_Katumba.pdf" class="sponsor-btn" download>
-          <i class="fa-solid fa-file-pdf"></i>
-          Télécharger la proposition complète
-          <i class="fa-solid fa-arrow-right"></i>
-        </a>
-      </div>
-      <div style="display:flex;justify-content:center;align-items:center;" class="reveal">
-        <div class="card-mockup">
-          <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop&q=80" alt="Illustration de paiement par carte bancaire" loading="lazy">
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- COACHING -->
-<section class="section" id="coaching">
-  <div class="container course">
-    <div class="reveal">
-      <span class="eyebrow">Formation personnelle</span>
-      <h2>Pourquoi attendre des années quand vous pouvez apprendre en UNE JOURNÉE ?</h2>
-      <p class="lead" style="margin-top:22px;">La révolution de l'IA a tout changé. Ce qui prenait autrefois des années de formation ne prend plus que 10 heures. Nous vous guidons étape par étape — aucune expérience requise — pour construire, lancer et déployer un site web professionnel avec intégration de paiement.</p>
-      <a class="btn" href="#contact" style="margin-top:26px;">S'inscrire maintenant <i class="fa-solid fa-angle-right"></i></a>
-    </div>
-    <div class="course-card reveal">
-      <h3>⚡ UNE JOURNÉE. UN SITE WEB. VOTRE AVENIR.</h3>
-      <ul class="course-meta">
-        <li><i class="fa-solid fa-clock"></i><span>Formation intensive de 10 heures — De zéro au développeur web professionnel en UNE JOURNÉE</span></li>
-        <li><i class="fa-solid fa-users"></i><span>Construisez un site web complet avec intégration de paiement et chat WhatsApp</span></li>
-        <li><i class="fa-solid fa-credit-card"></i><span>Formation 100 % GRATUITE. Déployez en LIGNE sur Netlify. Certificat inclus.</span></li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- OFFER -->
-<section class="section mist">
+<!-- TECHNOLOGY & SKILLS -->
+<section class="section" id="skills">
   <div class="container">
     <div class="section-heading reveal">
-      <span class="eyebrow">Ce que je propose</span>
-      <h2>Formation gratuite en compétences numériques — Alimentée par l'IA</h2>
+      <span class="eyebrow">Technologies &amp; Compétences</span>
+      <h2>Une boîte à outils full-stack pour construire de vrais systèmes</h2>
+      <p style="color:var(--muted);margin-top:12px;font-size:1.05rem;">De l'écran Android dans votre main à la base de données dans le cloud — la bonne technologie pour chaque partie de votre solution.</p>
     </div>
-    <div class="offer-grid">
-      <article class="offer-card reveal">
-        <i class="fa-solid fa-laptop-code"></i>
-        <h3>Développement web</h3>
-        <p>Créez des sites web réactifs et des applications mobiles en UNE JOURNÉE avec l'IA — aucune expérience en programmation requise.</p>
-        <a href="#contact">En savoir plus <i class="fa-solid fa-angle-right"></i></a>
+    <div class="skills-grid">
+      <article class="skill-group reveal">
+        <h3><i class="fa-solid fa-mobile-screen-button"></i>Développement Android &amp; iOS</h3>
+        <div class="tags">
+          <span class="tag">Kotlin</span><span class="tag">Java</span><span class="tag">Swift</span><span class="tag">SwiftUI</span><span class="tag">Firebase</span><span class="tag">Jetpack Compose</span>
+        </div>
       </article>
-      <article class="offer-card reveal">
-        <i class="fa-solid fa-brain"></i>
-        <h3>Marketing alimenté par l'IA</h3>
-        <p>Utilisez les outils d'IA pour créer du contenu, développer votre audience TikTok et générer des ventes.</p>
-        <a href="#contact">En savoir plus <i class="fa-solid fa-angle-right"></i></a>
+      <article class="skill-group reveal">
+        <h3><i class="fa-solid fa-window-restore"></i>Frontend Web</h3>
+        <div class="tags">
+          <span class="tag">React</span><span class="tag">JavaScript</span><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">Conception réactive</span>
+        </div>
       </article>
-      <article class="offer-card reveal">
-        <i class="fa-solid fa-palette"></i>
-        <h3>Art numérique</h3>
-        <p>Générez des œuvres d'art numériques professionnelles à l'aide d'outils d'IA comme Midjourney et DALL-E.</p>
-        <a href="#contact">En savoir plus <i class="fa-solid fa-angle-right"></i></a>
+      <article class="skill-group reveal">
+        <h3><i class="fa-solid fa-server"></i>Backend &amp; API</h3>
+        <div class="tags">
+          <span class="tag">Node.js</span><span class="tag">PHP</span><span class="tag">Python</span><span class="tag">API REST</span><span class="tag">Authentification</span>
+        </div>
       </article>
-      <article class="offer-card reveal">
-        <i class="fa-solid fa-person-chalkboard"></i>
-        <h3>Ateliers publics</h3>
-        <p>Rejoignez des ateliers publics GRATUITS — apprenez aux côtés de 1 000+ Zambiens qui construisent leur avenir numérique.</p>
-        <a href="#events">En savoir plus <i class="fa-solid fa-angle-right"></i></a>
+      <article class="skill-group reveal">
+        <h3><i class="fa-solid fa-database"></i>Bases de données</h3>
+        <div class="tags">
+          <span class="tag">PostgreSQL</span><span class="tag">MySQL</span><span class="tag">MongoDB</span><span class="tag">Firebase</span>
+        </div>
       </article>
-      <article class="offer-card reveal">
-        <i class="fa-solid fa-book-open-reader"></i>
-        <h3>Ressources</h3>
-        <p>Accédez gratuitement à des prompts IA, des modèles et des guides de déploiement — tout pour commencer à gagner de l'argent.</p>
-        <a href="#resources">En savoir plus <i class="fa-solid fa-angle-right"></i></a>
+      <article class="skill-group reveal">
+        <h3><i class="fa-solid fa-cloud"></i>Cloud &amp; DevOps</h3>
+        <div class="tags">
+          <span class="tag">Netlify</span><span class="tag">AWS</span><span class="tag">Git</span><span class="tag">Déploiement</span><span class="tag">CI/CD</span>
+        </div>
       </article>
-      <article class="offer-card reveal">
-        <i class="fa-solid fa-handshake"></i>
-        <h3>Partenariat</h3>
-        <p>Devenez partenaire pour K20 000 par session et atteignez 1 000 étudiants qui construiront des sites web avec VOTRE service de paiement.</p>
-        <a href="#sponsor">En savoir plus <i class="fa-solid fa-angle-right"></i></a>
+      <article class="skill-group reveal">
+        <h3><i class="fa-solid fa-robot"></i>IA &amp; Machine Learning</h3>
+        <div class="tags">
+          <span class="tag">TensorFlow</span><span class="tag">API ChatGPT</span><span class="tag">Intégrations IA</span>
+        </div>
       </article>
+    </div>
+  </div>
+</section>
+
+<!-- APP BOOTCAMP : DE L'IDÉE À L'APP -->
+<section class="section" id="bootcamp">
+  <div class="container">
+    <div class="section-heading center reveal">
+      <span class="eyebrow">Bootcamp d'application</span>
+      <h2>De zéro à une application fonctionnelle — en heures, pas en mois</h2>
+      <p style="color:var(--muted);margin-top:12px;font-size:1.05rem;">Aucune compétence technique ? Aucun problème. Ce n'est pas un cours où vous apprenez à coder — c'est un service de construction express. Vous apportez l'idée d'application, je la construis pour vous. Une application Android, iOS ou web fonctionnelle, livrée en quelques heures à moins d'une semaine.</p>
+    </div>
+    <div class="course reveal">
+      <div>
+        <h2>Vous avez l'idée. J'ai les compétences.</h2>
+        <p class="lead" style="margin-top:22px;">La plupart des gens avec de grandes idées d'applications ne lancent jamais parce qu'ils ne savent pas coder. Vous n'avez pas besoin de savoir. Décrivez votre idée, convenez du plan, et je construis, teste et déploie votre application — en quelques heures à moins d'une semaine.</p>
+        <a class="btn" href="#contact" style="margin-top:26px;">Engagez-moi pour construire votre app <i class="fa-solid fa-angle-right"></i></a>
+      </div>
+      <div class="course-card">
+        <h3>⚡ VOTRE IDÉE. MES COMPÉTENCES. VOTRE APP — RAPIDEMENT.</h3>
+        <ul class="course-meta">
+          <li><i class="fa-solid fa-bolt"></i><span>De zéro à une application fonctionnelle en quelques heures à plusieurs jours</span></li>
+          <li><i class="fa-solid fa-mobile-screen"></i><span>Aucune compétence technique requise — vous vous concentrez sur l'idée, je m'occupe de la technique</span></li>
+          <li><i class="fa-solid fa-rocket"></i><span>Android, iOS ou web — construite, testée et déployée en ligne, rapidement</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="events-grid reveal" style="margin-top:56px;">
+      <!-- Offre 1 : App web en quelques heures -->
+      <article class="event-card">
+        <div class="event-card-image">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80" alt="Développement d'application web" loading="lazy">
+          <div class="event-card-badge" style="background:#f59e0b;">QUELQUES HEURES</div>
+        </div>
+        <div class="event-card-body">
+          <div class="event-card-date">
+            <span class="event-day">⚡</span>
+            <span class="event-month">App web en heures</span>
+          </div>
+          <h3>De l'idée à une app web en ligne — le jour même</h3>
+          <p>Votre idée transformée en application web fonctionnelle en quelques heures. Pages d'atterrissage, tableaux de bord, portails — construites autour de votre idée, pas d'un modèle.</p>
+          <div class="event-card-meta">
+            <span><i class="fa-regular fa-clock"></i> Dès quelques heures</span>
+            <span><i class="fa-solid fa-code"></i> Aucune compétence technique</span>
+          </div>
+          <a href="#contact" class="event-card-btn">
+            Engagez-moi pour la construire <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </article>
+      <!-- Offre 2 : App Android en jours -->
+      <article class="event-card">
+        <div class="event-card-image">
+          <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&w=900&q=80" alt="Développement d'applications iOS et Android" loading="lazy">
+          <div class="event-card-badge" style="background:#f59e0b;">1–3 JOURS</div>
+        </div>
+        <div class="event-card-body">
+          <div class="event-card-date">
+            <span class="event-day">📱</span>
+            <span class="event-month">App iOS &amp; Android en jours</span>
+          </div>
+          <h3>Votre idée d'application, construite en vraie app iOS ou Android</h3>
+          <p>Décrivez votre idée une seule fois. Je la conçois et la construis en application iOS ou Android fonctionnelle — prête pour vos utilisateurs en quelques jours.</p>
+          <div class="event-card-meta">
+            <span><i class="fa-regular fa-clock"></i> En général 1–3 jours</span>
+            <span><i class="fa-solid fa-mobile-screen"></i> iOS &amp; Android</span>
+          </div>
+          <a href="#contact" class="event-card-btn">
+            Engagez-moi pour la construire <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </article>
+      <!-- Offre 3 : Système d'entreprise en moins d'une semaine -->
+      <article class="event-card">
+        <div class="event-card-image">
+          <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&w=900&q=80" alt="Développement de logiciel sur mesure" loading="lazy">
+          <div class="event-card-badge" style="background:#f59e0b;">MOINS D'1 SEMAINE</div>
+        </div>
+        <div class="event-card-body">
+          <div class="event-card-date">
+            <span class="event-day">🏢</span>
+            <span class="event-month">Système d'entreprise en jours</span>
+          </div>
+          <h3>Logiciel d'entreprise sur mesure en moins d'une semaine</h3>
+          <p>Des systèmes de gestion d'entreprise aux plateformes sur mesure — votre processus opérationnel numérisé, construit, testé et déployé en moins d'une semaine.</p>
+          <div class="event-card-meta">
+            <span><i class="fa-regular fa-clock"></i> Moins d'1 semaine</span>
+            <span><i class="fa-solid fa-building"></i> Pour votre organisation</span>
+          </div>
+          <a href="#contact" class="event-card-btn">
+            Engagez-moi pour la construire <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </article>
+    </div>
+    <div style="text-align:center;margin-top:36px;" class="reveal">
+      <a class="btn" href="#contact">Engagez-moi pour construire votre app <i class="fa-solid fa-angle-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<section class="featured">
+  <div class="container featured-inner reveal">
+    <h2>De l'idée à l'application en :</h2>
+    <div class="logo-row">
+      <div class="logo-item">⚡ Quelques heures</div>
+      <div class="logo-item">⚡ 1–3 jours en général</div>
+      <div class="logo-item">⚡ Moins d'1 semaine</div>
+      <div class="logo-item">✅ Aucune compétence technique</div>
     </div>
   </div>
 </section>
@@ -556,8 +957,8 @@
     <div class="testimonial-header reveal">
       <div>
         <span class="eyebrow">Témoignages</span>
-        <h2>De vrais étudiants. De vrais résultats.</h2>
-        <p style="color:rgba(255,255,255,.65);margin-top:10px;font-size:.95rem;">Ce que les participants disent après UNE SEULE JOURNÉE de formation.</p>
+        <h2>De vrais clients. De vraies applications.</h2>
+        <p style="color:rgba(255,255,255,.65);margin-top:10px;font-size:.95rem;">Ce que les clients disent de la construction rapide de leur application.</p>
       </div>
       <div style="display:flex;flex-direction:column;gap:10px;padding-top:8px;">
         <div style="display:flex;align-items:center;gap:12px;">
@@ -567,13 +968,13 @@
             <div style="color:rgba(255,255,255,.5);font-size:.78rem;margin-top:2px;">Note moyenne</div>
           </div>
         </div>
-        <p style="color:rgba(255,255,255,.55);font-size:.83rem;line-height:1.6;max-width:280px;">Issu de 1 000+ étudiants formés à travers le Copperbelt zambien.</p>
+        <p style="color:rgba(255,255,255,.55);font-size:.83rem;line-height:1.6;max-width:280px;">Des clients en Zambie et au-delà.</p>
       </div>
     </div>
     <div class="quotes-row reveal">
       <div class="quote-card">
         <div class="quote-stars">★★★★★</div>
-        <p>"Samuel rend le développement web concret. À la fin de la session, j'ai compris comment un site web devient un véritable outil commercial."</p>
+        <p>"J'avais une idée et aucun bagage technique. Samuel l'a transformée en une application fonctionnelle en quelques jours — je n'en croyais pas mes yeux."</p>
         <div class="quote-person">
           <div class="quote-avatar">L</div>
           <div><div class="quote-name">Linda M.</div><div class="quote-role">Entrepreneure</div></div>
@@ -581,7 +982,7 @@
       </div>
       <div class="quote-card">
         <div class="quote-stars">★★★★★</div>
-        <p>"La formation relie la programmation, l'IA, les systèmes de paiement et le marketing d'une manière immédiatement utile pour les petites entreprises."</p>
+        <p>"Pas de jargon, pas de mois d'attente. Il a pris mon problème d'entreprise, construit le système et l'a mis en ligne en moins d'une semaine."</p>
         <div class="quote-person">
           <div class="quote-avatar">C</div>
           <div><div class="quote-name">Chanda K.</div><div class="quote-role">Chef d'entreprise</div></div>
@@ -589,65 +990,40 @@
       </div>
       <div class="quote-card">
         <div class="quote-stars">★★★★★</div>
-        <p>"Son style d'enseignement est structuré, patient et axé sur ce que les étudiants peuvent réellement construire et déployer le même jour."</p>
+        <p>"Rapide, professionnel et concret. J'ai décrit mon idée une seule fois et j'ai reçu un vrai produit — pas une promesse."</p>
         <div class="quote-person">
           <div class="quote-avatar">T</div>
-          <div><div class="quote-name">Thandi N.</div><div class="quote-role">Étudiante</div></div>
+          <div><div class="quote-name">Thandi N.</div><div class="quote-role">Fondatrice de startup</div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- EVENTS -->
-<section class="section" id="events">
+<!-- COMPANY PARTNERSHIPS -->
+<section class="sponsor-section" id="partners">
   <div class="container">
-    <div class="section-heading reveal">
-      <span class="eyebrow">Événements à venir</span>
-      <h2>Bootcamps GRATUITS — Places limitées disponibles</h2>
-    </div>
-    <div class="events">
-      <article class="event-row reveal">
-        <div class="event-date">04<span>Juillet 2025</span></div>
-        <div>
-          <h3>⚡ BOOTCAMP D'UNE JOURNÉE : De zéro au développeur web professionnel</h3>
-          <p>8:00 – 21:00 · 1 000 places gratuites disponibles</p>
+    <div class="sponsor-grid">
+      <div class="sponsor-content reveal">
+        <span class="eyebrow">🤝 Partenariats d'entreprise</span>
+        <h2>Construisons quelque chose <span>ensemble</span></h2>
+        <p class="lead">Les entreprises et organisations peuvent collaborer avec Samuel de plusieurs façons — pas seulement par le parrainage. Que vous ayez besoin d'un logiciel, d'une formation pour votre personnel ou d'un support technologique à long terme, il existe une façon de s'associer.</p>
+        <div class="sponsor-benefits">
+          <div class="sponsor-benefit"><i class="fa-solid fa-check-circle"></i><span>Projets de développement logiciel</span></div>
+          <div class="sponsor-benefit"><i class="fa-solid fa-check-circle"></i><span>Formation du personnel</span></div>
+          <div class="sponsor-benefit"><i class="fa-solid fa-check-circle"></i><span>Conseil en technologies</span></div>
+          <div class="sponsor-benefit"><i class="fa-solid fa-check-circle"></i><span>Parrainage de la formation des développeurs</span></div>
+          <div class="sponsor-benefit"><i class="fa-solid fa-check-circle"></i><span>Opportunités de stages</span></div>
+          <div class="sponsor-benefit"><i class="fa-solid fa-check-circle"></i><span>Partenariats technologiques</span></div>
+          <div class="sponsor-benefit"><i class="fa-solid fa-check-circle"></i><span>Support technique à long terme</span></div>
         </div>
-        <span class="event-badge">GRATUIT</span>
-      </article>
-      <article class="event-row reveal">
-        <div class="event-date">11<span>Juillet 2025</span></div>
-        <div>
-          <h3>🎯 Masterclass de marketing alimenté par l'IA</h3>
-          <p>8:00 – 21:00 · Apprenez la création de contenu IA et la croissance sur TikTok</p>
+      </div>
+      <div style="display:flex;justify-content:center;align-items:center;" class="reveal">
+        <div class="card-mockup">
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=400&fit=crop&q=80" alt="Collaboration en équipe dans une entreprise" loading="lazy">
         </div>
-        <span class="event-badge">GRATUIT</span>
-      </article>
-      <article class="event-row reveal">
-        <div class="event-date">18<span>Juillet 2025</span></div>
-        <div>
-          <h3>🎨 Bootcamp d'art numérique alimenté par l'IA</h3>
-          <p>8:00 – 21:00 · Créez des œuvres d'art professionnelles avec des outils d'IA</p>
-        </div>
-        <span class="event-badge">GRATUIT</span>
-      </article>
+      </div>
     </div>
-    <div class="events-action reveal">
-      <p class="lead">Toute la formation est 100 % GRATUITE — parrainée par des partenaires de paiement de premier plan. Réservez votre place avant qu'elles ne soient toutes prises !</p>
-      <a class="btn" href="https://wa.me/260966658181?text=Bonjour%20Samuel%2C%20je%20veux%20rejoindre%20le%20bootcamp%20GRATUIT%20D'UNE%20JOURN%C3%89E%20!%20Veuillez%20m'envoyer%20les%20d%C3%A9tails." target="_blank" rel="noopener">
-        Rejoindre notre communauté <i class="fa-brands fa-whatsapp"></i>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- FOCUS BANNER -->
-<section class="focus">
-  <div class="container reveal">
-    <span class="eyebrow">Votre avenir numérique</span>
-    <h2>Votre avenir numérique commence en UNE JOURNÉE</h2>
-    <p class="lead">La révolution de l'IA a rendu le développement web accessible à tous. Ce qui prenait des années ne prend plus que 10 heures — et nous vous l'offrons 100 % GRATUITEMENT.</p>
-    <a class="btn" href="#contact">Rejoindre le bootcamp gratuit <i class="fa-solid fa-angle-right"></i></a>
   </div>
 </section>
 
@@ -656,7 +1032,7 @@
   <div class="container">
     <div class="section-heading reveal">
       <span class="eyebrow">Ressources gratuites</span>
-      <h2>Commencez votre parcours IA dès aujourd'hui</h2>
+      <h2>Apprenez &amp; construisez avec moi</h2>
     </div>
     <div class="resources-grid">
 
@@ -670,11 +1046,11 @@
           <span class="yt-label">YouTube</span>
         </a>
         <div class="resource-body">
-          <h3>🎥 Bootcamp d'une journée expliqué</h3>
-          <p>Regardez Samuel expliquer tout ce que vous apprendrez — de zéro au développeur web professionnel en seulement 10 heures !</p>
+          <h3>🎥 De l'idée à l'application fonctionnelle — expliqué</h3>
+          <p>Regardez Samuel expliquer comment une grande idée devient une application fonctionnelle — de zéro à la mise en ligne en quelques heures.</p>
           <div class="resource-meta">
             <span class="resource-tag">🎬 Vidéo</span>
-            <span class="resource-tag">Guide de 10 h</span>
+            <span class="resource-tag">Guide express</span>
           </div>
           <a href="https://youtu.be/qr4H4N2FkE8" class="resource-link" target="_blank" rel="noopener noreferrer">
             <i class="fa-solid fa-play"></i> Regarder sur YouTube <i class="fa-solid fa-arrow-right"></i>
@@ -715,16 +1091,15 @@
       </article>
 
     </div>
+  </div>
+</section>
 
-    <div class="sponsor-pitch-download reveal">
-      <h3>🤝 Devenez partenaire</h3>
-      <p>Téléchargez la proposition de parrainage complète pour apprendre comment votre carte de paiement peut atteindre 1 000+ entrepreneurs numériques par session.</p>
-      <a href="resources/Sponsor_Pitch_K20000_Per_Session_Samuel_Katumba.pdf" class="sponsor-btn" download>
-        <i class="fa-solid fa-file-pdf"></i>
-        Télécharger la proposition (K20 000/Session)
-        <i class="fa-solid fa-arrow-right"></i>
-      </a>
-    </div>
+<!-- FOCUS BANNER -->
+<section class="focus">
+  <div class="container reveal">
+    <span class="eyebrow">Ma façon de travailler</span>
+    <h2>Un problème que le logiciel peut résoudre ? Engagez-moi pour concevoir et construire la solution — et j'aiderai votre équipe à apprendre à l'utiliser, la gérer et la maintenir.</h2>
+    <a class="btn" href="#contact">Engagez-moi <i class="fa-solid fa-angle-right"></i></a>
   </div>
 </section>
 
@@ -733,16 +1108,19 @@
   <div class="container contact-grid">
     <div class="reveal">
       <span class="eyebrow">Contact</span>
-      <h2>🚀 Rejoignez 1 000+ Zambiens qui construisent leur avenir numérique</h2>
-      <p class="lead" style="margin-top:18px;">La révolution de l'IA a rendu le développement web accessible à tous. Rejoignez notre communauté gratuite et apprenez à construire en UNE JOURNÉE — aucune expérience requise. Places limitées !</p>
+      <h2>Un projet en tête ? Parlons-en.</h2>
+      <p class="lead" style="margin-top:18px;">Parlez-moi de votre idée, de votre problème d'entreprise ou du processus que vous souhaitez numériser. Je reviens vers vous avec les prochaines étapes — et nous construirons la solution ensemble.</p>
       <div class="contact-action">
-        <a class="btn" href="https://wa.me/260966658181?text=Bonjour%20Samuel%2C%20je%20veux%20rejoindre%20le%20bootcamp%20GRATUIT%20D'UNE%20JOURN%C3%89E%20!%20Veuillez%20m'envoyer%20les%20d%C3%A9tails." target="_blank" rel="noopener">
-          Rejoindre la communauté gratuite <i class="fa-brands fa-whatsapp"></i>
+        <a class="btn" href="mailto:officialkatumba@gmail.com?subject=Demande%20de%20projet%20logiciel&body=Bonjour%20Samuel%2C%20je%20souhaite%20discuter%20d%27un%20projet%20logiciel.">
+          Lancer un projet <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        <a class="btn outline" style="border-color:var(--plum);color:var(--plum);" href="https://wa.me/260966658181?text=Bonjour%20Samuel%2C%20je%20souhaite%20discuter%20d%27un%20projet%20logiciel%20pour%20mon%20organisation." target="_blank" rel="noopener">
+          Écrire sur WhatsApp <i class="fa-brands fa-whatsapp"></i>
         </a>
       </div>
     </div>
     <div class="contact-info-box reveal">
-      <h3>Contactez-nous</h3>
+      <h3>Contactez-moi</h3>
       <div class="contact-list">
         <div class="contact-item">
           <i class="fa-solid fa-location-dot"></i>
@@ -769,11 +1147,11 @@
 
 <footer>
   <div class="container">
-    <p>Copyright © <span id="year"></span> <strong>Samuel Katumba</strong> · 🚀 Autonomiser l'avenir numérique de la Zambie grâce à une formation gratuite alimentée par l'IA</p>
+    <p>Copyright © <span id="year"></span> <strong>Samuel Katumba</strong> · 💻 Conception &amp; développement de solutions logicielles pour les entreprises, organisations et particuliers.</p>
   </div>
 </footer>
 
-<a class="whatsapp-float" href="https://wa.me/260966658181?text=Bonjour%20Samuel%2C%20je%20veux%20rejoindre%20le%20bootcamp%20GRATUIT%20D'UNE%20JOURN%C3%89E%20!%20Veuillez%20m'envoyer%20les%20d%C3%A9tails." target="_blank" rel="noopener" aria-label="Discuter sur WhatsApp">
+<a class="whatsapp-float" href="https://wa.me/260966658181?text=Bonjour%20Samuel%2C%20je%20souhaite%20discuter%20d%27un%20projet%20logiciel%20pour%20mon%20organisation." target="_blank" rel="noopener" aria-label="Discuter sur WhatsApp">
   <i class="fa-brands fa-whatsapp"></i>
 </a>
 
